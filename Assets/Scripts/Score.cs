@@ -1,17 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class Lesson2Score : MonoBehaviour {
-	// 獲得ptの格納
-	private int nowScore = 0;
+public class Score : MonoBehaviour {
+	public int nowScore = 0;
 	
 	void Update () {
-		// スコアの表示処理
-		this.guiText.text =  " SCORE:" + nowScore;
+		this.guiText.text =  " SCORE:" + nowScore.ToString();
 	}
 
 	public void UpdateScore(int getScore){
-		// スコアの加算処理
 		nowScore += getScore;
 	}
 }

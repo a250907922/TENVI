@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 	private int Point = 10;
-	public int hp = 3;
+	public int hp = 4;
 	private GameObject GameManager;
 	public GameObject score;
 	public string TagetObjectName;

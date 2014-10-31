@@ -3,13 +3,14 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public bool facingRight = true;
 	public float maxSpeed = 5;
 	public float moveForce = 200; 
 	public float jumpForce = 200;
 
+	public bool facingRight = true;
 	public bool jump = false;
 	public bool move = false;
+	public bool isAttack = false;
 
 	private Transform groundCheck;
 	bool grounded = false;
@@ -20,20 +21,22 @@ public class Player : MonoBehaviour {
 	void Update () {
 		grounded = Physics2D.Linecast(transform.position, 
 		                              transform.position - transform.up * 1.3f,
-		                              1 << LayerMask.NameToLayer("Ground")); 
-
-		if(Input.GetKeyDown("up") && grounded)
-			jump = true;
-
+		                              1 << LayerMask.NameToLayer("Ground"));
 		if (facingRight)
 			bulletDir = 1;
 		else
 			bulletDir = -1;
-		if(Input.GetKeyDown("b"))
-			Instantiate(Bullet, new Vector2(transform.position.x + bulletDir, transform.position.y), Quaternion.identity);
+
+		GetComponent<Animator>().SetBool("isAttack",isAttack);
 	}
 
 	void FixedUpdate () {
+		if(Input.GetKeyDown("up") && grounded)
+			jump = true;
+
+		if(Input.GetKeyDown("b"))
+			Instantiate(Bullet, new Vector2(transform.position.x + bulletDir, transform.position.y), Quaternion.identity);
+
 		float h = Input.GetAxis("Horizontal");
 
 		if(h * rigidbody2D.velocity.x < maxSpeed)
@@ -50,6 +53,11 @@ public class Player : MonoBehaviour {
 			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
 			jump = false;
 		}
+
+		if(Input.GetKeyDown("return")){
+			isAttack = true;
+			StartCoroutine("WaitForAttack");
+		}
 	}
 
 	void Flip () {
@@ -57,5 +65,11 @@ public class Player : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	IEnumerator WaitForAttack()
+	{
+		yield return new WaitForSeconds(0.5f);
+		isAttack = false;
 	}
 }

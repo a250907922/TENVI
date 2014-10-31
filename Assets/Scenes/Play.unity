@@ -318,6 +318,7 @@ GameObject:
   - 61: {fileID: 1271322404}
   - 50: {fileID: 1271322403}
   - 114: {fileID: 1271322402}
+  - 95: {fileID: 1271322407}
   m_Layer: 0
   m_Name: "\u3068\u304B\u3052\u304A\u3068\u305301"
   m_TagString: Player
@@ -336,12 +337,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6af2389536bb4e039712b8b9d502797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingRight: 1
   maxSpeed: 5
   moveForce: 200
   jumpForce: 200
+  facingRight: 1
   jump: 0
   move: 0
+  isAttack: 0
   Bullet: {fileID: 100000, guid: a3ddfb51c1ab0486fb332c9861ebe9e2, type: 2}
 --- !u!50 &1271322403
 Rigidbody2D:
@@ -403,6 +405,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!95 &1271322407
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1271322401}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e921429ae22e64a93874210910ea69bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
 --- !u!1 &1710797900
 GameObject:
   m_ObjectHideFlags: 0

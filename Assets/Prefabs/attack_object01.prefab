@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 60: {fileID: 6000000}
   - 114: {fileID: 11400000}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: attack_object01
   m_TagString: SwordFire
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453beafc337b4402988068eee0e8b8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireScale: .5
+  fireScale: .699999988
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

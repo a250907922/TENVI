@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
     public static int bulletDir; /* 弾の進む方向(+右, -左)*/
 
     void Start () {
-        speed = 10;
+        speed = 15;
         rigidbody2D.velocity = new Vector2(bulletDir * speed, 0);
         bulletDir = 1;
     }
@@ -18,5 +18,5 @@ public class Bullet : MonoBehaviour {
           bulletDir = 1;
         else
           bulletDir = -1;
-        }
+    }
 }

@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
 	public int hp = 4;
 	public GameObject score;
 	public string TagetObjectName;
+	public static bool IsDeadEnemy = false;
 
 	void Start(){
 		GameObject.Find(TagetObjectName);
@@ -17,17 +18,19 @@ public class Enemy : MonoBehaviour {
 			Destroy (col.gameObject);
 			hp -= Bullet.power;
 			if(hp <= 0){
-				Destroy(gameObject);
-				score.SendMessage("UpdateScore", Point);
+				EnemyDead();
 			}
-			Debug.Log(hp);
 		}
 		if(col.gameObject.tag == "SwordFire"){
 			hp -= SwordFire.power;
 			if(hp <= 0){
-				Destroy(gameObject);
-				score.SendMessage("UpdateScore", Point);
+				EnemyDead();
 			}
 		}
+	}
+
+	void EnemyDead() {
+		Destroy(gameObject);
+		score.SendMessage("UpdateScore", Point);
 	}
 }

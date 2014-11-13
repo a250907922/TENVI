@@ -85,7 +85,6 @@ public class Player : MonoBehaviour {
 			StartCoroutine("WaitForAttack");
 			Instantiate(BulletPrefab, new Vector2(transform.position.x + Bullet.bulletDir, transform.position.y), Quaternion.identity);
 			bulletAttack = false;
-			Debug.Log("bullet");
 		}
 	}
 

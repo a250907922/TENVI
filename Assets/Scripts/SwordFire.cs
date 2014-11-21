@@ -4,12 +4,19 @@ using System.Collections;
 public class SwordFire : MonoBehaviour {
 
     public static int power = 4;
+    public int powerLevel;
+    public static int fixedPower;
     public static float firePosX;
     public float fireScale = 0.7f;
     private bool flip = true;
 
+    void Awake() {
+        powerLevel = PlayerPrefs.GetInt("powerLevel");
+    }
+
     void Start () {
         firePosX = fireScale/2;
+        fixedPower = power + powerLevel;
     }
 
     void Update () {

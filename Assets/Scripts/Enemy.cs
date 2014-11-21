@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 	private int Point = 10;
-	public int hp = 4;
+	public int hp = 10;
 	public GameObject score;
 	public string TagetObjectName;
 	public static bool IsDeadEnemy = false;
@@ -16,13 +16,13 @@ public class Enemy : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		if(col.gameObject.tag == "Bullet"){
 			Destroy (col.gameObject);
-			hp -= Bullet.power;
+			hp -= Bullet.fixedPower;
 			if(hp <= 0){
 				EnemyDead();
 			}
 		}
 		if(col.gameObject.tag == "SwordFire"){
-			hp -= SwordFire.power;
+			hp -= SwordFire.fixedPower;
 			if(hp <= 0){
 				EnemyDead();
 			}

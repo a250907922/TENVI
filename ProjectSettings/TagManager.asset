@@ -24,7 +24,7 @@ TagManager:
   User Layer 11: Bullet
   User Layer 12: SwordFire
   User Layer 13: Wall
-  User Layer 14: 
+  User Layer 14: Background
   User Layer 15: 
   User Layer 16: 
   User Layer 17: 
@@ -46,4 +46,12 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Background
+    userID: 1
+    uniqueID: 3777626711
+    locked: 0
+  - name: Characters
+    userID: 2
+    uniqueID: 1048046357
     locked: 0

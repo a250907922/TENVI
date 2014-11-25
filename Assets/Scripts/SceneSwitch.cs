@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class SceneSwitch : MonoBehaviour {
-    private int w;
-    private int h;
+    //private int w;
+    //private int h;
 
     void Start () {
-        w = Screen.width;
-        h = Screen.height;
+        //w = Screen.width;
+        //h = Screen.height;
     }
 
 	void Update () {
@@ -22,10 +22,12 @@ public class SceneSwitch : MonoBehaviour {
                             Application.LoadLevel ("Play");
                         if(obj.name == "Status")
                             Application.LoadLevel ("Status");
-                            if(obj.name == "Home")
+                        if(obj.name == "Home")
                             Application.LoadLevel ("Home");
                     }
                 }
+                if(Input.GetKeyDown ("h"))
+                        Application.LoadLevel ("Home");
             }
 
 /*

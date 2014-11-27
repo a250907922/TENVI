@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public float maxSpeed = 5; //プレイヤーの移動最高速度
+	public float maxSpeed = 5.0f; //プレイヤーの移動最高速度
 	public float moveForce = 200; //加速力(移動時に加える力)
 	public float jumpForce = 200; //ジャンプ力
 
@@ -17,6 +17,8 @@ public class Player : MonoBehaviour {
 
 	public GameObject BulletPrefab; // 弾オブジェクト
 	public GameObject Sword_Fire; // 近接攻撃オブジェクト
+	public GameObject hpbar; //HPバー
+	public float firePosX;
 
 	void Start() {
 		anim = GetComponent<Animator> (); //アニメーション用
@@ -25,29 +27,31 @@ public class Player : MonoBehaviour {
 	void Update () {
 		/* 地面に接触しているか */
 		grounded = Physics2D.Linecast(transform.position, 
-		                              transform.position - transform.up * 1.3f,
-		                              1 << LayerMask.NameToLayer("Ground"));
+			transform.position - transform.up * 1.0f,
+			1 << LayerMask.NameToLayer("Ground"));
 
 		if(Input.GetKeyDown("up") && grounded)
-			jump = true;
+		jump = true;
 
 		anim.SetBool("isAttack",isAttack); // アニメーション用
 		if(Input.GetKeyDown("x")){ // 近接攻撃
 			isAttack = true; // アニメーション用フラグ
 			swordAttack = true; // 攻撃フラグ
 			if(facingRight){ // 向きとオブジェクトを出す場所を合わせる
-				SwordFire.firePosX = 2.0f;
-			}else{
-				SwordFire.firePosX = -2.0f;
+				firePosX = SwordFire.fireScale*2.7f;
+				Debug.Log(firePosX);
+				}else{
+					firePosX = -SwordFire.fireScale*2.7f;
+					Debug.Log(firePosX);
+				}
 			}
-		}
 
 		if(Input.GetKeyDown("b")){ // 弾攻撃
 			bulletAttack = true;
 			if(facingRight)
-				Bullet.bulletDir = 1;
+			Bullet.bulletDir = 1;
 			else
-				Bullet.bulletDir = -1;
+			Bullet.bulletDir = -1;
 		}
 	}
 
@@ -65,18 +69,18 @@ public class Player : MonoBehaviour {
 			rigidbody2D.AddForce(Vector2.right * h * moveForce);
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
-		anim.SetFloat ("Speed", Mathf.Abs (rigidbody2D.velocity.x));
+		anim.SetFloat ("Speed", Mathf.Abs (rigidbody2D.velocity.x)); //アニメーション用
 
 		/* 左右反転 */
 		if(h > 0 && !facingRight)
-			Flip();
+		Flip();
 		else if(h < 0 && facingRight)
-			Flip();
+		Flip();
 
 		/* 攻撃 */
 		if(swordAttack){
 			StartCoroutine("WaitForAttack");
-			Instantiate(Sword_Fire, new Vector2(transform.position.x + SwordFire.firePosX, transform.position.y), Quaternion.identity);
+			Instantiate(Sword_Fire, new Vector2(transform.position.x + firePosX, transform.position.y), Quaternion.identity);
 			swordAttack = false;
 		}
 
@@ -85,6 +89,12 @@ public class Player : MonoBehaviour {
 			StartCoroutine("WaitForAttack");
 			Instantiate(BulletPrefab, new Vector2(transform.position.x + Bullet.bulletDir, transform.position.y), Quaternion.identity);
 			bulletAttack = false;
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if(col.gameObject.tag == "Enemy"){
+			hpbar.gameObject.SendMessage("onDamage", 1);
 		}
 	}
 
@@ -98,7 +108,7 @@ public class Player : MonoBehaviour {
 
 	/* 攻撃 */
 	IEnumerator WaitForAttack(){
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.3f);
 		isAttack = false;
 	}
 

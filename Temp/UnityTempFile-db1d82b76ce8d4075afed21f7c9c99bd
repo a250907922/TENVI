@@ -40,6 +40,7 @@
 'Assets/Scripts/Emitter.cs'
 'Assets/Scripts/Enemy.cs'
 'Assets/Scripts/GameManager.cs'
+'Assets/Scripts/HpBar.cs'
 'Assets/Scripts/Player.cs'
 'Assets/Scripts/SceneSwitch.cs'
 'Assets/Scripts/Score.cs'

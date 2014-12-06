@@ -69,7 +69,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
-  speed: 3
+  maxSpeed: 1
+  moveForce: 200
+  player: {fileID: 100000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
   score: {fileID: 0}
   TagetObjectName: 
 --- !u!212 &21200000

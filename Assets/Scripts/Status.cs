@@ -7,9 +7,8 @@ public class Status : MonoBehaviour {
     public int hpLevel;
     public int powerLevel;
     public int defenceLevel;
-    private float statusWidth;
-    private float statusHeight;
-
+    private float stsWd;
+    private float stsHt;
 
     void Awake() {
         playerLevel = PlayerPrefs.GetInt("playerLevel");
@@ -19,26 +18,26 @@ public class Status : MonoBehaviour {
     }
 
     void Start() {
-        statusWidth = 200.0f;
-        statusHeight = 280.0f;
+        stsWd = Screen.width -200;
+        stsHt= Screen.height - 100;
     }
 
     void OnGUI () {
         /* GUIグループの生成*/
-        GUI.BeginGroup (new Rect ((Screen.width/2) - (statusWidth/2), (Screen.height/2) - (statusHeight/2), statusWidth, statusWidth)); // 真ん中に100*140のグループ
-        GUI.Box (new Rect (0,0, statusWidth, statusWidth), "Player Level");
+        GUI.BeginGroup (new Rect (Screen.width/2 - stsWd/2, Screen.height/2 - stsHt/2, stsWd, stsHt)); // 真ん中に100*140のグループ
+        GUI.Box (new Rect (0,0, stsWd, stsHt), "Player Level");
 
         /* Power */
-        GUI.Label (new Rect (0,statusHeight/5,100,30), "Power");
-        if(GUI.Button (new Rect (statusWidth/3,statusHeight/5,100,30), "Level Up")){
+        GUI.Label (new Rect (0,30,100,30), "Power");
+        GUI.Box (new Rect (10,30,80,30), powerLevel.ToString());
+        if(GUI.Button (new Rect (100,30,80,30), "Level up")){
             powerLevel++;
             PlayerPrefs.SetInt("powerLevel", powerLevel);
         }
-        if (GUI.Button (new Rect(statusWidth*2/3, statusHeight/5, 100, 30), "Reset")) {
+        if (GUI.Button (new Rect(10, 70, 80, 30), "Reset")) {
             powerLevel = 0;
             PlayerPrefs.DeleteKey("powerLevel");
         }
-        GUI.Label (new Rect (10,120,80,30), powerLevel.ToString());
         GUI.EndGroup ();
         /* GUIグループ終了*/
     }

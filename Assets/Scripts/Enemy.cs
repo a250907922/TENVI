@@ -3,9 +3,11 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 	private int Point = 10;
-	public int hp = 10;
-	public float maxSpeed = 1.0f;
-	public float moveForce = 200; //加速力(移動時に加える力)
+	private int hp = 10;
+	private float maxSpeed = 1.0f;
+	private float moveForce = 200; //加速力(移動時に加える力)
+
+	private int bulletDamage, meleeDamage;
 
 	public GameObject player;
 	public GameObject score;
@@ -19,6 +21,8 @@ public class Enemy : MonoBehaviour {
 	void Start(){
 		GameObject.Find(TagetObjectName);
 		score = GameObject.Find ("Score");
+		bulletDamage = DamageCalc.fixedDamage("Bullet");
+		meleeDamage = DamageCalc.fixedDamage("Melee");
 	}
 
 	void Update() {
@@ -27,16 +31,14 @@ public class Enemy : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		if(col.gameObject.tag == "Bullet"){
 			Destroy (col.gameObject);
-			hp -= Bullet.fixedPower;
-			if(hp <= 0){
-				EnemyDead();
-			}
+			hp -= bulletDamage;
 		}
-		if(col.gameObject.tag == "SwordFire"){
-			hp -= SwordFire.fixedPower;
-			if(hp <= 0){
-				EnemyDead();
-			}
+		if(col.gameObject.tag == "MeleeAttack"){
+			hp -= meleeDamage;
+		}
+		if(hp <= 0){ //死んだとき
+			EnemyDead();
+			Experience.getExperience("Slime");
 		}
 	}
 

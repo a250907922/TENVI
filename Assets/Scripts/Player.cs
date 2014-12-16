@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 	public bool jump = false; //ジャンプしてるか
 	public bool isAttack = false; //攻撃してるか
 	public bool bulletAttack = false;
-	public bool swordAttack = false;
+	public bool meleeAttack = false;
 	bool grounded = false; //地面についてるか
 	private Animator anim; //アニメーション用
 
@@ -36,22 +36,20 @@ public class Player : MonoBehaviour {
 		anim.SetBool("isAttack",isAttack); // アニメーション用
 		if(Input.GetKeyDown("x")){ // 近接攻撃
 			isAttack = true; // アニメーション用フラグ
-			swordAttack = true; // 攻撃フラグ
+			meleeAttack = true; // 攻撃フラグ
 			if(facingRight){ // 向きとオブジェクトを出す場所を合わせる
-				firePosX = SwordFire.fireScale*2.7f;
-				Debug.Log(firePosX);
+				firePosX = AttackMelee.fireScale*2.7f;
 				}else{
-					firePosX = -SwordFire.fireScale*2.7f;
-					Debug.Log(firePosX);
+					firePosX = -AttackMelee.fireScale*2.7f;
 				}
 			}
 
 		if(Input.GetKeyDown("b")){ // 弾攻撃
 			bulletAttack = true;
 			if(facingRight)
-			Bullet.bulletDir = 1;
+			AttackBullet.bulletDir = 1;
 			else
-			Bullet.bulletDir = -1;
+			AttackBullet.bulletDir = -1;
 		}
 	}
 
@@ -78,16 +76,16 @@ public class Player : MonoBehaviour {
 		Flip();
 
 		/* 攻撃 */
-		if(swordAttack){
+		if(meleeAttack){
 			StartCoroutine("WaitForAttack");
 			Instantiate(Sword_Fire, new Vector2(transform.position.x + firePosX, transform.position.y), Quaternion.identity);
-			swordAttack = false;
+			meleeAttack = false;
 		}
 
 		/* 弾発射 */
 		if(bulletAttack){
 			StartCoroutine("WaitForAttack");
-			Instantiate(BulletPrefab, new Vector2(transform.position.x + Bullet.bulletDir, transform.position.y), Quaternion.identity);
+			Instantiate(BulletPrefab, new Vector2(transform.position.x + AttackBullet.bulletDir, transform.position.y), Quaternion.identity);
 			bulletAttack = false;
 		}
 	}

@@ -52,12 +52,12 @@
      <Compile Include="Assets\Scripts\DamageCalc.cs" />
      <Compile Include="Assets\Scripts\Emitter.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
-     <Compile Include="Assets\Scripts\Experience.cs" />
+     <Compile Include="Assets\Scripts\ExperienceManagement.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HpBar.cs" />
+     <Compile Include="Assets\Scripts\LevelUpEffect.cs" />
      <Compile Include="Assets\Scripts\PlaySceneGui.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\PlayerLevel.cs" />
      <Compile Include="Assets\Scripts\SceneSwitch.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\Status.cs" />

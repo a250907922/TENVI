@@ -100,13 +100,13 @@ public class Status : MonoBehaviour {
             defLevel = 0;
             intLevel = 0;
             wisLevel = 0;
-            PlayerPrefs.DeleteKey("playerLevel");
-            PlayerPrefs.DeleteKey("statusPoint");
-            PlayerPrefs.DeleteKey("hpLevel");
-            PlayerPrefs.DeleteKey("pwrLevel");
-            PlayerPrefs.DeleteKey("defLevel");
-            PlayerPrefs.DeleteKey("intLevel");
-            PlayerPrefs.DeleteKey("wisLevel");
+            PlayerPrefs.SetInt("playerLevel", 1);
+            PlayerPrefs.SetInt("stsPoint", 0);
+            PlayerPrefs.SetInt("hpLevel", 0);
+            PlayerPrefs.SetInt("pwrLevel", 0);
+            PlayerPrefs.SetInt("defLevel", 0);
+            PlayerPrefs.SetInt("intLevel", 0);
+            PlayerPrefs.SetInt("wisLevel", 0);
         }
 
         GUI.EndGroup ();

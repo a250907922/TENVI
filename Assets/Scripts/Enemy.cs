@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
 
 	public GameObject player;
 	public GameObject score;
+	public GameObject expObj;
 	public string TagetObjectName;
 	public static bool IsDeadEnemy = false;
 
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour {
 	void Start(){
 		GameObject.Find(TagetObjectName);
 		score = GameObject.Find ("Score");
+		expObj = GameObject.Find ("ExpObj");
 		bulletDamage = DamageCalc.fixedDamage("Bullet");
 		meleeDamage = DamageCalc.fixedDamage("Melee");
 	}
@@ -38,7 +40,6 @@ public class Enemy : MonoBehaviour {
 		}
 		if(hp <= 0){ //死んだとき
 			EnemyDead();
-			Experience.getExperience("Slime");
 		}
 	}
 
@@ -58,5 +59,6 @@ public class Enemy : MonoBehaviour {
 	void EnemyDead() {
 		Destroy(gameObject);
 		score.SendMessage("UpdateScore", Point);
+		expObj.SendMessage("ExpManagement", "Slime");
 	}
 }

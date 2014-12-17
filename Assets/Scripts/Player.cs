@@ -91,6 +91,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
+		/* ダメージ判定 */
 		if(col.gameObject.tag == "Enemy"){
 			hpbar.gameObject.SendMessage("onDamage", 1);
 		}

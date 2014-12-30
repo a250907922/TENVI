@@ -5,10 +5,12 @@ TagManager:
   tags:
   - Enemy
   - Bullet
-  - SwordFire
-  - 
+  - MeleeAttack
+  - Particle
   - 
   - Attack
+  - 
+  - 
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -22,10 +24,10 @@ TagManager:
   User Layer 9: Player
   User Layer 10: Enemy
   User Layer 11: Bullet
-  User Layer 12: SwordFire
+  User Layer 12: MeleeAttack
   User Layer 13: Wall
   User Layer 14: Background
-  User Layer 15: 
+  User Layer 15: Particle
   User Layer 16: 
   User Layer 17: 
   User Layer 18: 
@@ -43,15 +45,23 @@ TagManager:
   User Layer 30: 
   User Layer 31: 
   m_SortingLayers:
-  - name: Default
-    userID: 0
-    uniqueID: 0
-    locked: 0
   - name: Background
     userID: 1
     uniqueID: 3777626711
     locked: 0
-  - name: Characters
+  - name: Default
+    userID: 0
+    uniqueID: 0
+    locked: 0
+  - name: Particle
+    userID: 3
+    uniqueID: 3013243645
+    locked: 0
+  - name: Enemy
+    userID: 4
+    uniqueID: 245752509
+    locked: 0
+  - name: Player
     userID: 2
     uniqueID: 1048046357
     locked: 0

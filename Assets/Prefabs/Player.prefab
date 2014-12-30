@@ -86,10 +86,12 @@ MonoBehaviour:
   maxSpeed: 5
   moveForce: 200
   jumpForce: 200
+  damageForce: 100
   jump: 0
   isAttack: 0
   bulletAttack: 0
-  swordAttack: 0
+  meleeAttack: 0
+  isDamaged: 0
   BulletPrefab: {fileID: 100000, guid: a3ddfb51c1ab0486fb332c9861ebe9e2, type: 2}
   Sword_Fire: {fileID: 100000, guid: c1e07d49482d940bb9f4c5906376ec04, type: 2}
   hpbar: {fileID: 0}

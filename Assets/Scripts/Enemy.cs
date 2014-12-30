@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour {
 			hor = -1;
 		}
 		if(hor * rigidbody2D.velocity.x < maxSpeed) //maxSpeedより小さかったら力を加える
-				rigidbody2D.AddForce(Vector2.right * hor * moveForce);
+			rigidbody2D.AddForce(Vector2.right * hor * moveForce);
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed) //maxSpeedより大きかったら修正
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 	}

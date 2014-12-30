@@ -10,25 +10,38 @@ public class SceneSwitch : MonoBehaviour {
         //h = Screen.height;
     }
 
-	void Update () {
-                if (Input.GetMouseButtonDown (0)) {
-                    Vector3    tapPoint   = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Collider2D collider2d = Physics2D.OverlapPoint(tapPoint);
-                    if (collider2d) {
-                        GameObject obj = collider2d.transform.gameObject;
-                        Debug.Log(obj.name);
+    void Update () {
+        if (Input.GetMouseButtonDown (0)) {
+            Vector3    tapPoint   = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Collider2D collider2d = Physics2D.OverlapPoint(tapPoint);
+            if (collider2d) {
+                GameObject obj = collider2d.transform.gameObject;
+                Debug.Log(obj.name);
                         //ここから何が押されたか指定 
                         if(obj.name == "Play")
-                            Application.LoadLevel ("Play");
+                            SwitchPlay();
                         if(obj.name == "Status")
-                            Application.LoadLevel ("Status");
+                            SwitchStatus();
                         if(obj.name == "Home")
-                            Application.LoadLevel ("Home");
+                            SwitchHome();
                     }
                 }
                 if(Input.GetKeyDown ("h"))
-                        Application.LoadLevel ("Home");
+                Application.LoadLevel ("Home");
             }
+
+    public void SwitchPlay() {
+        Application.LoadLevel ("Play");
+    }
+
+    public void SwitchStatus() {
+        Application.LoadLevel ("Status");
+    }
+
+    public void SwitchHome() {
+        Application.LoadLevel ("Home");
+    }
+
 
 /*
             void OnGUI() {
@@ -38,4 +51,4 @@ public class SceneSwitch : MonoBehaviour {
                 }
             }
             */
-}
+        }

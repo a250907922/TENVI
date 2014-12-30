@@ -4,8 +4,9 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public float maxSpeed = 5.0f; //プレイヤーの移動最高速度
-	public float moveForce = 200; //加速力(移動時に加える力)
-	public float jumpForce = 200; //ジャンプ力
+	public float moveForce = 200.0f; //加速力(移動時に加える力)
+	public float jumpForce = 200.0f; //ジャンプ力
+	public float damageForce = 100.0f;
 
 	public static bool facingRight = true; //方向判定用 右向いてるときはtrue
 	public bool jump = false; //ジャンプしてるか
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour {
 	public bool meleeAttack = false;
 	bool grounded = false; //地面についてるか
 	private Animator anim; //アニメーション用
+	public static bool isRightEnemy; //自分より敵が右にいるか
+	public bool isDamaged; //ダメージを受けてる状態
 
 	public GameObject BulletPrefab; // 弾オブジェクト
 	public GameObject Sword_Fire; // 近接攻撃オブジェクト
@@ -93,7 +96,20 @@ public class Player : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		/* ダメージ判定 */
 		if(col.gameObject.tag == "Enemy"){
-			hpbar.gameObject.SendMessage("onDamage", 1);
+			if(!isDamaged){
+				hpbar.gameObject.SendMessage("onDamage", 1);
+				if((col.gameObject.transform.position.x - this.transform.position.x) > 0) {
+					isRightEnemy = true;
+					rigidbody2D.AddForce(-Vector2.right * damageForce);
+					rigidbody2D.AddForce(Vector2.up * damageForce);
+				} else {
+					isRightEnemy = false;
+					rigidbody2D.AddForce(Vector2.right * damageForce);
+					rigidbody2D.AddForce(Vector2.up * damageForce);
+				}
+				isDamaged = true;
+				StartCoroutine("WaitForDamage");
+			}
 		}
 	}
 
@@ -105,10 +121,16 @@ public class Player : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
-	/* 攻撃 */
+	/* 攻撃ディレイ */
 	IEnumerator WaitForAttack(){
 		yield return new WaitForSeconds(0.3f);
 		isAttack = false;
+	}
+
+	/* ダメージ受けた後の無敵時間 */
+	IEnumerator WaitForDamage() {
+		yield return new WaitForSeconds(1.0f);
+		isDamaged = false;
 	}
 
 	void OnDestroy() {

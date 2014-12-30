@@ -102,9 +102,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLevel: 0
+  skillPoint: 0
+  stsPoint: 0
   hpLevel: 0
-  powerLevel: 0
-  defenceLevel: 0
+  pwrLevel: 0
+  defLevel: 0
+  intLevel: 0
+  wisLevel: 0
 --- !u!4 &1273662459
 Transform:
   m_ObjectHideFlags: 0

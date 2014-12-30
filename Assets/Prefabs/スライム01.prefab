@@ -68,11 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d93119c87844c038f3573cbc5b1617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  maxSpeed: 1
-  moveForce: 200
   player: {fileID: 100000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
   score: {fileID: 0}
+  expObj: {fileID: 0}
   TagetObjectName: 
 --- !u!212 &21200000
 SpriteRenderer:
@@ -92,7 +90,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 1048046357
+  m_SortingLayerID: 245752509
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8676cfe2297e94bc28da455e3758d9cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

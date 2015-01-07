@@ -59,6 +59,6 @@ public class Enemy : MonoBehaviour {
 	void EnemyDead() {
 		Destroy(gameObject);
 		score.SendMessage("UpdateScore", Point);
-		expObj.SendMessage("ExpManagement", "Slime");
+		expObj.SendMessage("ExpManagement", gameObject.tag);
 	}
 }

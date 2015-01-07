@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Player : MonoBehaviour {
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour {
 
 	public GameObject BulletPrefab; // 弾オブジェクト
 	public GameObject Sword_Fire; // 近接攻撃オブジェクト
-	public GameObject hpbar; //HPバー
+	public GameObject hpBar; //HPバー
 	public float firePosX;
 
 	void Start() {
@@ -95,9 +96,10 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		/* ダメージ判定 */
-		if(col.gameObject.tag == "Enemy"){
+		if(col.gameObject.tag == "Slime"){
 			if(!isDamaged){
-				hpbar.gameObject.SendMessage("onDamage", 1);
+				//TODO : キャラによって変える
+				hpBar.SendMessage("OnDamage", 1); //HPバーにダメージメッセージを送る
 				if((col.gameObject.transform.position.x - this.transform.position.x) > 0) {
 					isRightEnemy = true;
 					rigidbody2D.AddForce(-Vector2.right * damageForce);

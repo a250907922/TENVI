@@ -17,7 +17,7 @@ public class ExperienceManagement : MonoBehaviour {
 
     void Awake () {
         exp = PlayerPrefs.GetInt("exp"); // 現在の経験値
-        allExp = PlayerPrefs.GetInt("allExp"); 
+        allExp = PlayerPrefs.GetInt("allExp");
         playerLevel = PlayerPrefs.GetInt("playerLevel");
         stsPoint = PlayerPrefs.GetInt("stsPoint");
     }
@@ -37,9 +37,9 @@ public class ExperienceManagement : MonoBehaviour {
             LevelUpPlayer();
         }
     }
-    public void getExperience(string defeatedCharactor) { //敵を倒したときに経験値獲得のために呼び出す関数
-        switch(defeatedCharactor) { //倒したキャラごとに獲得経験値を設定
-            case "Slime": 
+    public void getExperience(string defeatedCharactorTag) { //敵を倒したときに経験値獲得のために呼び出す関数
+        switch(defeatedCharactorTag) { //倒したキャラごとに獲得経験値を設定
+            case "Slime":
                 getExp = 1;
                 break;
             case "Antallion":
@@ -53,10 +53,12 @@ public class ExperienceManagement : MonoBehaviour {
     }
 
     public void ShowExp () {
-        Instantiate(expPrefab, player.transform.position, player.transform.rotation);
+        //Instantiate(expPrefab, player.transform.position, player.transform.rotation);
+        Debug.Log("経験値を"+getExp+"獲得しました。");
     }
 
     public int requiredExpForLevelUp () { //レベル毎のレベルアップに必要な経験値
+        /*
         switch (playerLevel) { //現在のレベル
             case 1:
                 requiredExp = 1;
@@ -70,7 +72,8 @@ public class ExperienceManagement : MonoBehaviour {
             case 4:
                 requiredExp = 100;
                 break;
-        }
+        }*/
+        requiredExp = playerLevel;
         return requiredExp; // レベルアップに必要な経験値
     }
 

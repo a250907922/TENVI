@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\AttackMelee.cs" />
      <Compile Include="Assets\Scripts\Background.cs" />
      <Compile Include="Assets\Scripts\DamageCalc.cs" />
+     <Compile Include="Assets\Scripts\DamageManagement.cs" />
      <Compile Include="Assets\Scripts\Emitter.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\ExperienceManagement.cs" />

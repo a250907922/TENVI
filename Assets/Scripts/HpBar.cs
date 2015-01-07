@@ -1,23 +1,39 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class HpBar : MonoBehaviour {
+    private RectTransform rectTransform;
+    public Image image;
+    public GameObject gameManager;
+    public int hitPoint; //現在のHP
+    private int maxHp; //HP最大値
+    float rectWidth; //HPゲージの長さ
+    float aDamageWidth; //1ダメージで減るHPゲージの長さ
+
+    void Awake() {
+        hitPoint = PlayerPrefs.GetInt("hitPoint");
+        gameManager = GameObject.Find("GameManager");
+    }
 
 	void Start () {
-
+        maxHp = hitPoint;
+        rectWidth = image.rectTransform.sizeDelta.x; //HPゲージの長さ取得
+        aDamageWidth = rectWidth/maxHp;
 	}
-	
+
 	void Update () {
 	}
 
-    void onDamage(int damage)
+    void OnDamage(int damage)
     {
-        Rect hpRect = guiTexture.pixelInset;
-        hpRect.width = (hpRect.width - damage); 
-
-        if(hpRect.width <= 0){ //0以下にしない
-            hpRect.width = 0;
+        hitPoint -= damage;
+        Debug.Log(hitPoint);
+        if(hitPoint <= 0){ //HPが0以下になったら
+            gameManager.SendMessage("GameOver"); //ゲームオーバー
         }
-        guiTexture.pixelInset = hpRect;
+        /* HPゲージ UI */
+        rectWidth = aDamageWidth * hitPoint;
+        image.rectTransform.sizeDelta = new Vector2(rectWidth, image.rectTransform.sizeDelta.y);
     }
 }

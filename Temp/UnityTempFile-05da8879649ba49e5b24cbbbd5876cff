@@ -42,6 +42,7 @@
 'Assets/Scripts/AttackMelee.cs'
 'Assets/Scripts/Background.cs'
 'Assets/Scripts/DamageCalc.cs'
+'Assets/Scripts/DamageManagement.cs'
 'Assets/Scripts/Emitter.cs'
 'Assets/Scripts/Enemy.cs'
 'Assets/Scripts/ExperienceManagement.cs'

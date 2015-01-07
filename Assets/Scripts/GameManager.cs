@@ -14,4 +14,8 @@ public class GameManager : MonoBehaviour {
 			Instantiate(enemyPrefab,new Vector2(tmpXpos, DropPosY), Quaternion.identity);
 		}
 	}
+
+	void GameOver() {
+		Application.LoadLevel("Home");
+	}
 }

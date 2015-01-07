@@ -1,15 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="../../Documents/UNIDRA_DATA/ChapterProjects/Chapter12/Assets/Scripts/EnemyGeneratorCtrl.cs">
     <Files>
       <File FileName="../../Documents/UNIDRA_DATA/Data/MainGame/Scripts/Chapter6/PlayerCtrl.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="14" Column="21" />
+      <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Score.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SceneSwitch.cs" Line="1" Column="1" />
-      <File FileName="../../Documents/UNIDRA_DATA/ChapterProjects/Chapter12/Assets/Scripts/PlayerCtrl.cs" Line="127" Column="27" />
-      <File FileName="../../Documents/UNIDRA_DATA/ChapterProjects/Chapter11/Assets/Scripts/PlayerCtrl.cs" Line="107" Column="12" />
+      <File FileName="../../Documents/UNIDRA_DATA/ChapterProjects/Chapter12/Assets/Scripts/PlayerCtrl.cs" Line="1" Column="1" />
+      <File FileName="../../Documents/UNIDRA_DATA/ChapterProjects/Chapter11/Assets/Scripts/PlayerCtrl.cs" Line="1" Column="1" />
       <File FileName="../../Documents/UNIDRA_DATA/ChapterProjects/Chapter12/Assets/Scripts/EnemyGeneratorCtrl.cs" Line="10" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>

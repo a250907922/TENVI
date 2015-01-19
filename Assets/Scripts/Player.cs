@@ -22,7 +22,9 @@ public class Player : MonoBehaviour {
 	public GameObject BulletPrefab; // 弾オブジェクト
 	public GameObject Sword_Fire; // 近接攻撃オブジェクト
 	public GameObject hpBar; //HPバー
-	public float firePosX;
+	public float firePosX; //近接攻撃の出る場所
+	public float mutekiTime = 1.0f;
+	public float flashInterval = 0.02f;
 
 	void Start() {
 		anim = GetComponent<Animator> (); //アニメーション用
@@ -30,9 +32,9 @@ public class Player : MonoBehaviour {
 
 	void Update () {
 		/* 地面に接触しているか */
-		grounded = Physics2D.Linecast(transform.position, 
-			transform.position - transform.up * 1.0f,
-			1 << LayerMask.NameToLayer("Ground"));
+		grounded = Physics2D.Linecast(transform.position,
+		transform.position - transform.up * 1.0f,
+		1 << LayerMask.NameToLayer("Ground"));
 
 		if(Input.GetKeyDown("up") && grounded)
 		jump = true;
@@ -43,10 +45,10 @@ public class Player : MonoBehaviour {
 			meleeAttack = true; // 攻撃フラグ
 			if(facingRight){ // 向きとオブジェクトを出す場所を合わせる
 				firePosX = AttackMelee.fireScale*2.7f;
-				}else{
-					firePosX = -AttackMelee.fireScale*2.7f;
-				}
+			}else{
+				firePosX = -AttackMelee.fireScale*2.7f;
 			}
+		}
 
 		if(Input.GetKeyDown("b")){ // 弾攻撃
 			bulletAttack = true;
@@ -66,11 +68,11 @@ public class Player : MonoBehaviour {
 		}
 
 		/* 移動速度 */
-		float h = Input.GetAxis("Horizontal"); 
+		float h = Input.GetAxis("Horizontal");
 		if(h * rigidbody2D.velocity.x < maxSpeed)
-			rigidbody2D.AddForce(Vector2.right * h * moveForce);
+		rigidbody2D.AddForce(Vector2.right * h * moveForce);
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
-			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+		rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 		anim.SetFloat ("Speed", Mathf.Abs (rigidbody2D.velocity.x)); //アニメーション用
 
 		/* 左右反転 */
@@ -94,7 +96,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
+	void OnCollisionEnter2D(Collision2D col) {
 		/* ダメージ判定 */
 		if(col.gameObject.tag == "Slime"){
 			if(!isDamaged){
@@ -124,14 +126,31 @@ public class Player : MonoBehaviour {
 	}
 
 	/* 攻撃ディレイ */
-	IEnumerator WaitForAttack(){
+	IEnumerator WaitForAttack() {
 		yield return new WaitForSeconds(0.3f);
 		isAttack = false;
 	}
 
 	/* ダメージ受けた後の無敵時間 */
 	IEnumerator WaitForDamage() {
-		yield return new WaitForSeconds(1.0f);
+		float flashTime = 0f;
+		Color color = renderer.material.color;
+		bool inv = false;
+		while (mutekiTime > flashTime){
+			if(!inv){
+				color.a = 0.5f;
+				renderer.material.color = color;
+				inv = true;
+			}else{
+				color.a = 1.0f;
+				renderer.material.color = color;
+				inv = false;
+			}
+			yield return new WaitForSeconds(flashInterval);
+			flashTime += flashInterval;
+		}
+		color.a = 1.0f;
+		renderer.material.color = color;
 		isDamaged = false;
 	}
 

@@ -33,7 +33,7 @@ public class Status : MonoBehaviour {
     }
 
     void Start() {
-        playerLevelText.text = playerLevel.ToString();
+        playerLevelText.text = "LEVEL " + playerLevel.ToString();
         /*
         stsWd = Screen.width -200;
         stsHt= Screen.height - 100;
@@ -45,7 +45,7 @@ public class Status : MonoBehaviour {
     }
 
     void Update() {
-        stsPointText.text = stsPoint.ToString();
+        stsPointText.text = "STATUS POINT " + stsPoint.ToString();
         hpText.text = hpLevel.ToString();
         pwrText.text = pwrLevel.ToString();
         defText.text = defLevel.ToString();

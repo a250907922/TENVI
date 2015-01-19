@@ -17,7 +17,7 @@ public class SceneSwitch : MonoBehaviour {
             if (collider2d) {
                 GameObject obj = collider2d.transform.gameObject;
                 Debug.Log(obj.name);
-                        //ここから何が押されたか指定 
+                        //ここから何が押されたか指定
                         if(obj.name == "Play")
                             SwitchPlay();
                         if(obj.name == "Status")
@@ -31,15 +31,19 @@ public class SceneSwitch : MonoBehaviour {
             }
 
     public void SwitchPlay() {
-        Application.LoadLevel ("Play");
+        Application.LoadLevel("StageSelect");
     }
 
     public void SwitchStatus() {
-        Application.LoadLevel ("Status");
+        Application.LoadLevel("Status");
     }
 
     public void SwitchHome() {
-        Application.LoadLevel ("Home");
+        Application.LoadLevel("Home");
+    }
+
+    public void SwitchStageSelect() {
+        Application.LoadLevel("StageSelect");
     }
 
 

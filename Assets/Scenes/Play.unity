@@ -608,8 +608,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1710797901}
-        m_MethodName: BackButton
+      - m_Target: {fileID: 863743204}
+        m_MethodName: SwitchHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1081,6 +1081,18 @@ Prefab:
       propertyPath: hpBar
       value: 
       objectReference: {fileID: 28683776}
+    - target: {fileID: 21200000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
   m_RootGameObject: {fileID: 1541537113}
@@ -1182,6 +1194,8 @@ MonoBehaviour:
   Sword_Fire: {fileID: 100000, guid: c1e07d49482d940bb9f4c5906376ec04, type: 2}
   hpBar: {fileID: 28683776}
   firePosX: 0
+  mutekiTime: 1
+  flashInterval: .0199999996
 --- !u!50 &1541537115
 Rigidbody2D:
   m_ObjectHideFlags: 0

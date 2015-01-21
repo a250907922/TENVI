@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HpBar.cs" />
      <Compile Include="Assets\Scripts\LevelUpEffect.cs" />
+     <Compile Include="Assets\Scripts\Pick.cs" />
      <Compile Include="Assets\Scripts\PlaySceneGui.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SceneSwitch.cs" />

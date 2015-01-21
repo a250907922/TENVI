@@ -46,6 +46,10 @@ public class SceneSwitch : MonoBehaviour {
         Application.LoadLevel("StageSelect");
     }
 
+    public void SwitchPick() {
+      Application.LoadLevel("Pick");
+    }
+
 
 /*
             void OnGUI() {

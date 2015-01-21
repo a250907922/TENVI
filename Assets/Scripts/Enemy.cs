@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour {
 		expObj = GameObject.Find ("ExpObj");
 		bulletDamage = DamageCalc.fixedDamage("Bullet");
 		meleeDamage = DamageCalc.fixedDamage("Melee");
+		StartCoroutine ("SpawnEnemy");
 	}
 
 	void Update() {
@@ -41,6 +42,17 @@ public class Enemy : MonoBehaviour {
 		if(hp <= 0){ //死んだとき
 			EnemyDead();
 		}
+	}
+
+	private IEnumerator SpawnEnemy() {
+		gameObject.layer = 16;
+		Color updateColor = new Vector4(0, 0, 0, 0.1f);
+		renderer.material.color = new Vector4(0, 0, 0, 0);
+		while (renderer.material.color.a <= 1){
+			renderer.material.color += updateColor;
+			yield return new WaitForSeconds(0.1f);
+		}
+		gameObject.layer = 10;
 	}
 
 	void Move() {

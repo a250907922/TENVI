@@ -72,6 +72,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,8 +95,10 @@ MonoBehaviour:
   isDamaged: 0
   BulletPrefab: {fileID: 100000, guid: a3ddfb51c1ab0486fb332c9861ebe9e2, type: 2}
   Sword_Fire: {fileID: 100000, guid: c1e07d49482d940bb9f4c5906376ec04, type: 2}
-  hpbar: {fileID: 0}
+  hpBar: {fileID: 0}
   firePosX: 0
+  mutekiTime: 1
+  flashInterval: .0199999996
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -116,7 +119,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 1048046357
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 064e13e6f259b4a2198a5f34280c615c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89552f3c2778948f6b01b8e49b59ad5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

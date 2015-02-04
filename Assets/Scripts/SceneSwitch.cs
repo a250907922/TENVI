@@ -2,12 +2,7 @@
 using System.Collections;
 
 public class SceneSwitch : MonoBehaviour {
-    //private int w;
-    //private int h;
-
     void Start () {
-        //w = Screen.width;
-        //h = Screen.height;
     }
 
     void Update () {
@@ -16,7 +11,6 @@ public class SceneSwitch : MonoBehaviour {
             Collider2D collider2d = Physics2D.OverlapPoint(tapPoint);
             if (collider2d) {
                 GameObject obj = collider2d.transform.gameObject;
-                Debug.Log(obj.name);
                         //ここから何が押されたか指定
                         if(obj.name == "Play")
                             SwitchPlay();
@@ -27,7 +21,7 @@ public class SceneSwitch : MonoBehaviour {
                     }
                 }
                 if(Input.GetKeyDown ("h"))
-                Application.LoadLevel ("Home");
+                  Application.LoadLevel ("Home");
             }
 
     public void SwitchPlay() {
@@ -49,14 +43,4 @@ public class SceneSwitch : MonoBehaviour {
     public void SwitchPick() {
       Application.LoadLevel("Pick");
     }
-
-
-/*
-            void OnGUI() {
-                GUI.Box(new Rect(w/4, h/4, w/2, h/2), "Menu");
-                if(GUI.Button(new Rect(20,40,80,20), "Game Start !")) {
-                    Application.LoadLevel("Play");
-                }
-            }
-            */
-        }
+}

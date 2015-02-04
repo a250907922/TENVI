@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Status.unity
   - enabled: 1
     path: Assets/Scenes/StageSelect.unity
+  - enabled: 1
+    path: Assets/Scenes/Pick.unity

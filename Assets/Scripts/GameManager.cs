@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour {
 	// EnemyPrefab設定GameObject
 	public GameObject enemyPrefab;
 	// ドロップするオブジェクトの位置指定
-	private float DropPosY = 8.0f;
+	private float DropPosY = -3.5f;
 	public StageSelect stage;
 	public int nStage;
 

@@ -61,9 +61,10 @@ GameObject:
   - 4: {fileID: 400006}
   - 198: {fileID: 19800004}
   - 199: {fileID: 19900004}
+  - 58: {fileID: 5871878}
   m_Layer: 15
   m_Name: energyBlast
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,12 +174,23 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
-  m_LocalRotation: {x: .653281569, y: .270597994, z: -.270597965, w: .65328145}
+  m_LocalRotation: {x: .653281629, y: .270598024, z: -.270597994, w: .65328151}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
   m_RootOrder: 0
+--- !u!58 &5871878
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: 1.20000005
+  m_Center: {x: 0, y: 0}
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1
@@ -3203,7 +3215,7 @@ ParticleSystem:
       minMaxState: 1
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     type: 0
     plane0: {fileID: 0}
     plane1: {fileID: 0}

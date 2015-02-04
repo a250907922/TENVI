@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
 		if(Time.frameCount % 100 == 0){
 			float tmpXpos = Random.Range(-8.0f, 8.0f);
 			// EnemyObjectのInstantiate
-			Instantiate(enemyPrefab,new Vector2(tmpXpos, DropPosY), Quaternion.identity);
+			Instantiate(enemyPrefab, new Vector2(tmpXpos, DropPosY), Quaternion.identity);
 		}
 	}
 

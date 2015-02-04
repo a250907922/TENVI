@@ -15,11 +15,18 @@ public class ErekiBall : MonoBehaviour {
 	}
 
 	void Update () {
-		transform.position = new Vector2(transform.position.x + speed, transform.position.y);//移動
+		//移動
+		transform.position = new Vector2(transform.position.x + speed, transform.position.y);
 		//時間経過で消滅
 		lifeTime -= Time.deltaTime;
 		if (lifeTime < 0) {
 			Destroy(gameObject);
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D col){
+		if(col.gameObject.tag == "Enemy"){
+			col.gameObject.SendMessage("Damage", damage);
 		}
 	}
 }

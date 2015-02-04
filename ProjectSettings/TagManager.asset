@@ -23,14 +23,14 @@ TagManager:
   User Layer 8: Ground
   User Layer 9: Player
   User Layer 10: Enemy
-  User Layer 11: Bullet
+  User Layer 11: Skills
   User Layer 12: MeleeAttack
   User Layer 13: Wall
   User Layer 14: Background
   User Layer 15: Particle
   User Layer 16: SpawningEnemy
   User Layer 17: PickedCharacter
-  User Layer 18: 
+  User Layer 18: NeverHit
   User Layer 19: 
   User Layer 20: 
   User Layer 21: 

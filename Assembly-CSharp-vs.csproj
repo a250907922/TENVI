@@ -54,7 +54,6 @@
      <Compile Include="Assets\Scripts\DamageManagement.cs" />
      <Compile Include="Assets\Scripts\Emitter.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
-     <Compile Include="Assets\Scripts\ErekiBall.cs" />
      <Compile Include="Assets\Scripts\ExperienceManagement.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HpBar.cs" />
@@ -65,6 +64,16 @@
      <Compile Include="Assets\Scripts\SceneSwitch.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\SkillShot.cs" />
+     <Compile Include="Assets\Scripts\Skills\EnergyBlast.cs" />
+     <Compile Include="Assets\Scripts\Skills\ErekiBall.cs" />
+     <Compile Include="Assets\Scripts\Skills\FireShot.cs" />
+     <Compile Include="Assets\Scripts\Skills\FrameBall.cs" />
+     <Compile Include="Assets\Scripts\Skills\GreenCore.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillAttack.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillAttack2.cs" />
+     <Compile Include="Assets\Scripts\Skills\Spark.cs" />
+     <Compile Include="Assets\Scripts\Skills\WhityBomb.cs" />
+     <Compile Include="Assets\Scripts\Skills\WhityBomb2.cs" />
      <Compile Include="Assets\Scripts\StageManager.cs" />
      <Compile Include="Assets\Scripts\StageSelect.cs" />
      <Compile Include="Assets\Scripts\Status.cs" />

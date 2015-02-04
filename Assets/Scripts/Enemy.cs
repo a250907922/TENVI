@@ -2,12 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
-	private int Point = 10;
+	//private int Point = 10; //スコア用
 	private int hp = 10;
+	public int slimeExp = 1;
 	private float maxSpeed = 1.0f;
 	private float moveForce = 200; //加速力(移動時に加える力)
-
-	private int bulletDamage, meleeDamage;
 
 	public GameObject player;
 	public GameObject score;
@@ -24,27 +23,10 @@ public class Enemy : MonoBehaviour {
 		GameObject.Find(TagetObjectName);
 		score = GameObject.Find ("Score");
 		expObj = GameObject.Find ("ExpObj");
-		bulletDamage = DamageCalc.fixedDamage("Bullet");
-		meleeDamage = DamageCalc.fixedDamage("Melee");
-		Debug.Log(gameObject.layer);
 		StartCoroutine ("SpawnEnemy");
-		Debug.Log(gameObject.layer);
 	}
 
 	void Update() {
-	}
-
-	void OnCollisionEnter2D(Collision2D col){
-		if(col.gameObject.tag == "Bullet"){
-			Destroy (col.gameObject);
-			hp -= bulletDamage;
-		}
-		if(col.gameObject.tag == "MeleeAttack"){
-			hp -= meleeDamage;
-		}
-		if(hp <= 0){ //死んだとき
-			EnemyDead();
-		}
 	}
 
 	//透明からだんだん出現する
@@ -73,9 +55,16 @@ public class Enemy : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 	}
 
+	public void Damage(int damage){
+		hp -= damage;
+		if(hp <= 0){ //死んだとき
+			EnemyDead();
+		}
+	}
+
 	void EnemyDead() {
 		Destroy(gameObject);
-		score.SendMessage("UpdateScore", Point);
-		expObj.SendMessage("ExpManagement", gameObject.tag);
+		//score.SendMessage("UpdateScore", Point);
+		expObj.SendMessage("GetExperience", slimeExp);
 	}
 }

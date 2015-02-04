@@ -98,9 +98,9 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		/* ダメージ判定 */
-		if(col.gameObject.tag == "Slime"){
+		if(col.gameObject.tag == "Enemy"){
 			if(!isDamaged){
-				//TODO : キャラによって変える
+				//TODO : キャラによって変える, Damage関数を作る
 				hpBar.SendMessage("OnDamage", 1); //HPバーにダメージメッセージを送る
 				if((col.gameObject.transform.position.x - this.transform.position.x) > 0) {
 					isRightEnemy = true;

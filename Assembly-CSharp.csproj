@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Particles\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <Compile Include="Assets\Scripts\AttackBullet.cs" />
      <Compile Include="Assets\Scripts\AttackMelee.cs" />
      <Compile Include="Assets\Scripts\Background.cs" />
@@ -53,6 +54,7 @@
      <Compile Include="Assets\Scripts\DamageManagement.cs" />
      <Compile Include="Assets\Scripts\Emitter.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\ErekiBall.cs" />
      <Compile Include="Assets\Scripts\ExperienceManagement.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HpBar.cs" />
@@ -62,10 +64,11 @@
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SceneSwitch.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
+     <Compile Include="Assets\Scripts\SkillShot.cs" />
      <Compile Include="Assets\Scripts\StageManager.cs" />
      <Compile Include="Assets\Scripts\StageSelect.cs" />
      <Compile Include="Assets\Scripts\Status.cs" />
-     <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
+     <None Include="Assets\Particles\KY_magicEffectsFree\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

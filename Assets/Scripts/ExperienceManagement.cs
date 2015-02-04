@@ -5,7 +5,6 @@ using System.Collections;
 public class ExperienceManagement : MonoBehaviour {
     public int exp;//現在の経験値
     public int allExp;//総経験値
-    public int getExp;//獲得経験値
     //public int upLevel = 1;
     public int playerLevel;
     public int stsPoint;
@@ -31,15 +30,13 @@ public class ExperienceManagement : MonoBehaviour {
     void Start () {
         player = GameObject.Find ("Player");
         //EXPGUI
-        aExpWidth = image.rectTransform.sizeDelta.x/requiredExpForLevelUp();
+        aExpWidth = image.rectTransform.sizeDelta.x/RequiredExpForLevelUp();
         rectWidth = aExpWidth * exp;
         image.rectTransform.sizeDelta = new Vector2(rectWidth, image.rectTransform.sizeDelta.y);
     }
 
-    public void ExpManagement (string defeatedCharactor) {
-        getExperience(defeatedCharactor);
-        ShowExp();
-        if (exp >= requiredExpForLevelUp()){ //レベルアップ関数を呼び出す
+    public void ExpManagement() {
+        if (exp >= RequiredExpForLevelUp()){ //レベルアップ関数を呼び出す
             LevelUpPlayer();
         }
         //EXP GUI
@@ -47,27 +44,16 @@ public class ExperienceManagement : MonoBehaviour {
         image.rectTransform.sizeDelta = new Vector2(rectWidth, image.rectTransform.sizeDelta.y);
     }
 
-    public void getExperience(string defeatedCharactorTag) { //敵を倒したときに経験値獲得のために呼び出す関数
-        switch(defeatedCharactorTag) { //倒したキャラごとに獲得経験値を設定
-            case "Slime":
-                getExp = 1;
-                break;
-            case "Antallion":
-                getExp = 100;
-                break;
-        }
+    public void GetExperience(int getExp) { //敵を倒したときに経験値獲得のために呼び出す関数
         exp += getExp;
         allExp += getExp;
         PlayerPrefs.SetInt("exp", exp);
         PlayerPrefs.SetInt("allExp", allExp);
-    }
-
-    public void ShowExp () {
-
         Debug.Log("経験値を"+getExp+"獲得しました。");
+        ExpManagement();
     }
 
-    public int requiredExpForLevelUp () { //レベル毎のレベルアップに必要な経験値
+    public int RequiredExpForLevelUp () { //レベル毎のレベルアップに必要な経験値
         /*
         switch (playerLevel) { //現在のレベル
             case 1:
@@ -97,7 +83,7 @@ public class ExperienceManagement : MonoBehaviour {
         PlayerPrefs.SetInt("playerLevel", playerLevel);
         stsPoint++; //+= upLevel; //ステータスポイントも一つあげる。
         PlayerPrefs.SetInt("stsPoint", stsPoint);
-        aExpWidth = rectWidth/requiredExpForLevelUp(); //経験値バーの必要経験値更新
+        aExpWidth = rectWidth/RequiredExpForLevelUp(); //経験値バーの必要経験値更新
     }
 
     private IEnumerator ShowLevelUp() {

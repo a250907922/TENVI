@@ -10,7 +10,6 @@ public class Player : MonoBehaviour {
 	public float damageForce = 100.0f;
 
 	public static bool facingRight = true; //方向判定用 右向いてるときはtrue
-	public bool jump = false; //ジャンプしてるか
 	public bool isAttack = false; //攻撃してるか
 	public bool bulletAttack = false;
 	public bool meleeAttack = false;
@@ -26,6 +25,8 @@ public class Player : MonoBehaviour {
 	public float mutekiTime = 1.0f;
 	public float flashInterval = 0.02f;
 
+	private bool onLeftButton, onRightButton = false;
+
 	void Start() {
 		anim = GetComponent<Animator> (); //アニメーション用
 	}
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour {
 		1 << LayerMask.NameToLayer("Ground"));
 
 		if(Input.GetKeyDown("up") && grounded)
-		jump = true;
+			Jump();
 
 		anim.SetBool("isAttack",isAttack); // アニメーション用
 		if(Input.GetKeyDown("x")){ // 近接攻撃
@@ -60,26 +61,14 @@ public class Player : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		/* ジャンプ */
-		if (jump) {
-			//anim.SetTrigger("Jump");
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-			jump = false;
-		}
-
 		/* 移動速度 */
 		float h = Input.GetAxis("Horizontal");
-		if(h * rigidbody2D.velocity.x < maxSpeed)
-		rigidbody2D.AddForce(Vector2.right * h * moveForce);
-		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
-		rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
-		anim.SetFloat ("Speed", Mathf.Abs (rigidbody2D.velocity.x)); //アニメーション用
-
-		/* 左右反転 */
-		if(h > 0 && !facingRight)
-		Flip();
-		else if(h < 0 && facingRight)
-		Flip();
+		Move(h);
+		if(onLeftButton){
+			Move(-1);
+		}else if(onRightButton){
+			Move(1);
+		}
 
 		/* 攻撃 */
 		if(meleeAttack){
@@ -115,6 +104,33 @@ public class Player : MonoBehaviour {
 				StartCoroutine("WaitForDamage");
 			}
 		}
+	}
+
+	//ジャンプ
+	public void Jump() {
+		//anim.SetTrigger("Jump");
+		rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+	}
+
+	//移動
+	//h:加える力(+が右)
+	public void Move(float h) {
+		if(h>0){
+			if(!facingRight)
+				Flip();
+		}else if(h<0){
+			if(facingRight)
+				Flip();
+		}
+			//力を加える
+		if(h * rigidbody2D.velocity.x < maxSpeed)
+			rigidbody2D.AddForce(Vector2.right * h * moveForce);
+
+		//maxspeed超えないように
+		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
+		rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+		//アニメーション用
+		anim.SetFloat ("Speed", Mathf.Abs (rigidbody2D.velocity.x));
 	}
 
 	/* 左右反転 */
@@ -156,5 +172,21 @@ public class Player : MonoBehaviour {
 
 	void OnDestroy() {
 		facingRight = true;
+	}
+
+	public void LeftButtonStart() {
+		onLeftButton = true;
+	}
+
+	public void LeftButtonStop() {
+		onLeftButton = false;
+	}
+
+	public void RightButtonStart() {
+		onRightButton = true;
+	}
+
+	public void RightButtonStop() {
+		onRightButton = false;
 	}
 }

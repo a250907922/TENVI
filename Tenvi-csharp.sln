@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{8355DBAB-785D-513F-069A-2ED744272555}") = "Tenvi", "Assembly-CSharp-vs.csproj", "{AF9B0F9F-0412-F36A-01FD-44E228478692}"
+Project("{9C4013FD-9288-68CD-97A7-01BA4DC98E2C}") = "TENVI", "Assembly-CSharp-vs.csproj", "{9E7B93BC-3D14-650B-9892-7DBA2252A36F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AF9B0F9F-0412-F36A-01FD-44E228478692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF9B0F9F-0412-F36A-01FD-44E228478692}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF9B0F9F-0412-F36A-01FD-44E228478692}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF9B0F9F-0412-F36A-01FD-44E228478692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E7B93BC-3D14-650B-9892-7DBA2252A36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E7B93BC-3D14-650B-9892-7DBA2252A36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E7B93BC-3D14-650B-9892-7DBA2252A36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E7B93BC-3D14-650B-9892-7DBA2252A36F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																											GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

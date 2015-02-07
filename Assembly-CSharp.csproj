@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{AF9B0F9F-0412-F36A-01FD-44E228478692}</ProjectGuid>
+	<ProjectGuid>{9E7B93BC-3D14-650B-9892-7DBA2252A36F}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SceneSwitch.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
+     <Compile Include="Assets\Scripts\SkillSet.cs" />
      <Compile Include="Assets\Scripts\SkillShot.cs" />
      <Compile Include="Assets\Scripts\Skills\EnergyBlast.cs" />
      <Compile Include="Assets\Scripts\Skills\ErekiBall.cs" />

@@ -9,7 +9,7 @@ public class SkillShot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		//DropPosY = Screen.height;
 	}
 
 	// Update is called once per frame

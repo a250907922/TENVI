@@ -1580,10 +1580,14 @@ MonoBehaviour:
   moveForce: 200
   jumpForce: 200
   damageForce: 150
+  isAttack: 0
   bulletAttack: 0
+  meleeAttack: 0
   isDamaged: 0
   BulletPrefab: {fileID: 100000, guid: a3ddfb51c1ab0486fb332c9861ebe9e2, type: 2}
+  Sword_Fire: {fileID: 100000, guid: c1e07d49482d940bb9f4c5906376ec04, type: 2}
   hpBar: {fileID: 28683776}
+  firePosX: 0
   mutekiTime: 1
   flashInterval: .0199999996
 --- !u!50 &1541537115
@@ -1677,21 +1681,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyBlast: {fileID: 19850726, guid: 6bcf3f754221349a48e91230299cafc4, type: 2}
-  erekiBall: {fileID: 19850898, guid: 165389a8c8aae40d3895051a4aa08caf, type: 2}
-  erekiBall2: {fileID: 19855164, guid: 6d065c8fc1f7344c2a2e681c710b9b47, type: 2}
+  ErekiBall: {fileID: 19850898, guid: 165389a8c8aae40d3895051a4aa08caf, type: 2}
+  ErekiBall2: {fileID: 19855164, guid: 6d065c8fc1f7344c2a2e681c710b9b47, type: 2}
   fireShot: {fileID: 19825960, guid: 307139552a10448ae8a81be9257563d8, type: 2}
   frameBall: {fileID: 19863214, guid: b04ce3f4784854adea0e114c5f793269, type: 2}
-  greenCore: {fileID: 19828170, guid: 4dc8c05bab5e94e4da2b06f961dc246a, type: 2}
+  GreenCore: {fileID: 19828170, guid: 4dc8c05bab5e94e4da2b06f961dc246a, type: 2}
   skillAttack: {fileID: 19875014, guid: 0b7350a5524954f0ca2d4880c400d1fd, type: 2}
   skillAttack2: {fileID: 19830260, guid: 7e299cbffe5d743b98ecdbc5d566cd1f, type: 2}
-  spark: {fileID: 19809302, guid: 740b8e922a0874f31aba73ad0be92564, type: 2}
-  whityBomb: {fileID: 19845220, guid: 471c0cd8b507e40da86bf3deeb97d4d8, type: 2}
-  whityBomb2: {fileID: 19831780, guid: 88b669e39b247489291eb05ef623f87f, type: 2}
+  Spark: {fileID: 19809302, guid: 740b8e922a0874f31aba73ad0be92564, type: 2}
+  WhityBomb: {fileID: 19845220, guid: 471c0cd8b507e40da86bf3deeb97d4d8, type: 2}
+  WhityBomb2: {fileID: 19831780, guid: 88b669e39b247489291eb05ef623f87f, type: 2}
   direction: 0
-  skill: default
-  meleeAttack: {fileID: 100000, guid: c1e07d49482d940bb9f4c5906376ec04, type: 2}
-  skillButton: {fileID: 734087382}
-  isAttack: 0
 --- !u!1 &1544277803
 GameObject:
   m_ObjectHideFlags: 0

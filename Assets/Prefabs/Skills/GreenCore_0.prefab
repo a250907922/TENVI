@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 428164}
   - 198: {fileID: 19828164}
   - 199: {fileID: 19928164}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYflash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 428166}
   - 198: {fileID: 19828166}
   - 199: {fileID: 19928166}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYcircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 428168}
   - 198: {fileID: 19828168}
   - 199: {fileID: 19928168}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYdustB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - 58: {fileID: 5828164}
   - 114: {fileID: 11420922}
   - 50: {fileID: 5022342}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GreenCore_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - 4: {fileID: 428172}
   - 198: {fileID: 19828172}
   - 199: {fileID: 19928172}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYexplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - 4: {fileID: 428174}
   - 108: {fileID: 10828164}
   - 114: {fileID: 11428164}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - 4: {fileID: 428176}
   - 108: {fileID: 10828166}
   - 114: {fileID: 11428166}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

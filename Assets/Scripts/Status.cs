@@ -9,12 +9,7 @@ public class Status : MonoBehaviour {
     public int hitPoint, power, defence, intelligence, wisdom;
     public int exp;
     public Text playerLevelText, stsPointText, hpText, pwrText, defText, intText, wisText;
-    /*
-    private float stsWd, stsHt; //外側の枠
-    private float stsLeft, stsUp; //外側の枠の左と上
-    private float abiWd, abiHt; //ステータス1個分の幅と高さ
-    */
-
+    public Button hpButton, pwrButton, defButton, intButton, wisButton;
 
     void Awake() {
         playerLevel = PlayerPrefs.GetInt("playerLevel"); //プレイヤのレベル
@@ -34,14 +29,6 @@ public class Status : MonoBehaviour {
 
     void Start() {
         playerLevelText.text = "LEVEL " + playerLevel.ToString();
-        /*
-        stsWd = Screen.width -200;
-        stsHt= Screen.height - 100;
-        stsLeft = Screen.width/2 - stsWd/2;
-        stsUp = Screen.height/2 - stsHt/2;
-        abiWd = stsWd/6;
-        abiHt = stsHt/6;
-        */
     }
 
     void Update() {
@@ -51,6 +38,20 @@ public class Status : MonoBehaviour {
         defText.text = defLevel.ToString();
         intText.text = intLevel.ToString();
         wisText.text = wisLevel.ToString();
+
+        if(stsPoint <= 0){
+          hpButton.interactable = false;
+          pwrButton.interactable = false;
+          defButton.interactable = false;
+          intButton.interactable = false;
+          wisButton.interactable = false;
+        }else{
+          hpButton.interactable = true;
+          pwrButton.interactable = true;
+          defButton.interactable = true;
+          intButton.interactable = true;
+          wisButton.interactable = true;
+        }
     }
 
     void OnDestroy() {
@@ -59,6 +60,7 @@ public class Status : MonoBehaviour {
         SetDefence();
         SetIntelligence();
         SetWisdom();
+        SetStatusPoint();
     }
 /*
     void GetHitPoint() {
@@ -107,94 +109,9 @@ public class Status : MonoBehaviour {
         PlayerPrefs.SetInt("wisdom", wisdom);
     }
 
-
-    /* GUI */
-    /*
-    void OnGUI () {
-        // 外枠のグループ
-        GUI.BeginGroup (new Rect (stsLeft, stsUp, stsWd, stsHt)); // 真ん中にstsWd*stsHtのグループ
-        GUI.Box (new Rect (0,0, stsWd, stsHt), "Level");
-        GUI.Label (new Rect (stsWd/2+50, 0, 50, 20), playerLevel.ToString() + " (" + exp.ToString() + "/" + playerLevel.ToString() + ")");
-
-        // ステータスのグループ
-        GUI.BeginGroup (new Rect (stsWd/12, stsHt*2/3 + 30, stsWd - stsWd/6, abiHt));
-        GUI.Box (new Rect (0,0,stsWd-stsWd/6,abiHt), "Status Point");
-        GUI.Box (new Rect (stsWd/2, 5, 50, 20), stsPoint.ToString());
-
-        // HP
-        GUI.BeginGroup (new Rect (0, 30, abiWd, abiHt));
-        GUI.Box (new Rect (0,0,abiWd, abiHt), "HP");
-        GUI.Box (new Rect (20,30,50,30), hpLevel.ToString());
-        if(GUI.Button (new Rect (100,30,30,30), "+")){
-            hpLevel++;
-            PlayerPrefs.SetInt("hpLevel", hpLevel);
-        }
-        GUI.EndGroup ();
-
-        // Power
-        GUI.BeginGroup (new Rect (abiWd, 30, abiWd, abiHt));
-        GUI.Box (new Rect (0,0,abiWd, abiHt), "Power");
-        GUI.Box (new Rect (20,30,50,30), pwrLevel.ToString());
-        if(GUI.Button (new Rect (100,30,30,30), "+")){
-            pwrLevel++;
-            PlayerPrefs.SetInt("pwrLevel", pwrLevel);
-        }
-        GUI.EndGroup ();
-
-        // Defence
-        GUI.BeginGroup (new Rect (abiWd*2, 30, abiWd, abiHt));
-        GUI.Box (new Rect (0,0,abiWd, abiHt), "Defence");
-        GUI.Box (new Rect (20,30,50,30), defLevel.ToString());
-        if(GUI.Button (new Rect (100,30,30,30), "+")){
-            defLevel++;
-            PlayerPrefs.SetInt("defLevel", defLevel);
-        }
-        GUI.EndGroup ();
-
-        // Intelligence
-        GUI.BeginGroup (new Rect (abiWd*3, 30, abiWd, abiHt));
-        GUI.Box (new Rect (0,0,abiWd, abiHt), "Intelligence");
-        GUI.Box (new Rect (20,30,50,30), intLevel.ToString());
-        if(GUI.Button (new Rect (100,30,30,30), "+")){
-            intLevel++;
-            PlayerPrefs.SetInt("intLevel", intLevel);
-        }
-        GUI.EndGroup ();
-
-        // Wisdom
-        GUI.BeginGroup (new Rect (abiWd*4, 30, abiWd, abiHt));
-        GUI.Box (new Rect (0,0,abiWd, abiHt), "Wisdom");
-        GUI.Box (new Rect (20,30,50,30), wisLevel.ToString());
-        if(GUI.Button (new Rect (100,30,30,30), "+")){
-            wisLevel++;
-            PlayerPrefs.SetInt("wisLevel", wisLevel);
-        }
-        GUI.EndGroup ();
-        GUI.EndGroup ();
-
-        // Reset
-        if (GUI.Button (new Rect(10, 70, 80, 30), "Reset")) {
-            playerLevel = 1;
-            stsPoint = 0;
-            hpLevel = 0;
-            pwrLevel = 0;
-            defLevel = 0;
-            intLevel = 0;
-            wisLevel = 0;
-            PlayerPrefs.SetInt("playerLevel", 1);
-            PlayerPrefs.SetInt("stsPoint", 0);
-            PlayerPrefs.SetInt("hpLevel", 0);
-            PlayerPrefs.SetInt("pwrLevel", 0);
-            PlayerPrefs.SetInt("defLevel", 0);
-            PlayerPrefs.SetInt("intLevel", 0);
-            PlayerPrefs.SetInt("wisLevel", 0);
-            PlayerPrefs.SetInt("exp", 0);
-            PlayerPrefs.SetInt("allExp", 0);
-        }
-
-        GUI.EndGroup ();
+    void SetStatusPoint() {
+        PlayerPrefs.SetInt("stsPoint", stsPoint);
     }
-    */
 
     public void ClickHp() {
         hpLevel++;

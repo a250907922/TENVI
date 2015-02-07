@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 425958}
   - 198: {fileID: 19825958}
   - 199: {fileID: 19925958}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: frames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 58: {fileID: 5825958}
   - 114: {fileID: 11474376}
   - 50: {fileID: 5008214}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fireShot_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 4: {fileID: 425962}
   - 108: {fileID: 10825958}
   - 114: {fileID: 11425958}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

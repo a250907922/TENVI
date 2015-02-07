@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450896}
   - 108: {fileID: 10850902}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 199: {fileID: 19950898}
   - 114: {fileID: 11450902}
   - 58: {fileID: 5850902}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ErekiBall_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - 4: {fileID: 450900}
   - 198: {fileID: 19850900}
   - 199: {fileID: 19950900}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ErekiSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 4: {fileID: 450902}
   - 198: {fileID: 19850902}
   - 199: {fileID: 19950902}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ErekiCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}

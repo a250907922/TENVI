@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 463212}
   - 198: {fileID: 19863212}
   - 199: {fileID: 19963212}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,8 @@ GameObject:
   - 199: {fileID: 19963214}
   - 58: {fileID: 5863212}
   - 114: {fileID: 11498592}
-  m_Layer: 0
+  - 50: {fileID: 5094692}
+  m_Layer: 11
   m_Name: frameBall_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +47,7 @@ GameObject:
   - 4: {fileID: 463216}
   - 198: {fileID: 19863216}
   - 199: {fileID: 19963216}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYdustD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +63,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 463218}
   - 108: {fileID: 10863212}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +121,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 463214}
   m_RootOrder: 1
+--- !u!50 &5094692
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163214}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!58 &5863212
 CircleCollider2D:
   m_ObjectHideFlags: 1

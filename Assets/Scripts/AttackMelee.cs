@@ -10,6 +10,7 @@ public class AttackMelee : MonoBehaviour {
 
     void Start () {
       fixedDamage = DamageCalc.fixedDamage("Melee");
+      StartCoroutine("WaitForDirection");
     }
 
     void Update () {
@@ -29,5 +30,12 @@ public class AttackMelee : MonoBehaviour {
       if(col.gameObject.tag == "Enemy"){
         col.gameObject.SendMessage("Damage", fixedDamage);
       }
+    }
+
+    private IEnumerator WaitForDirection() {
+      renderer.enabled = false;
+      yield return new WaitForSeconds(0.01f);
+      renderer.enabled = true;
+      yield break;
     }
 }

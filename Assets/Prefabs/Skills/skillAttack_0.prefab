@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 475010}
   - 198: {fileID: 19875010}
   - 199: {fileID: 19975010}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYdust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 475012}
   - 198: {fileID: 19875012}
   - 199: {fileID: 19975012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYcircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - 199: {fileID: 19975014}
   - 58: {fileID: 5875010}
   - 114: {fileID: 11486788}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: skillAttack_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - 4: {fileID: 475016}
   - 198: {fileID: 19875016}
   - 199: {fileID: 19975016}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYskill_core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - 4: {fileID: 475018}
   - 108: {fileID: 10875010}
   - 114: {fileID: 11475010}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

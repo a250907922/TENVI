@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 409298}
   - 108: {fileID: 10809302}
   - 114: {fileID: 11409302}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 409300}
   - 198: {fileID: 19809300}
   - 199: {fileID: 19909300}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ErekiSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 58: {fileID: 5809302}
   - 114: {fileID: 11443516}
   - 50: {fileID: 5041604}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spark_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

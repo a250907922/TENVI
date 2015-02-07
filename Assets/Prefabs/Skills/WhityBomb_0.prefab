@@ -13,7 +13,7 @@ GameObject:
   - 58: {fileID: 5845220}
   - 114: {fileID: 11443254}
   - 50: {fileID: 5040382}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WhityBomb_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 4: {fileID: 445222}
   - 198: {fileID: 19845222}
   - 199: {fileID: 19945222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYsphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 4: {fileID: 445224}
   - 198: {fileID: 19845224}
   - 199: {fileID: 19945224}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYdustB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - 4: {fileID: 445226}
   - 198: {fileID: 19845226}
   - 199: {fileID: 19945226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYcircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - 4: {fileID: 445228}
   - 108: {fileID: 10845220}
   - 114: {fileID: 11445220}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - 4: {fileID: 445230}
   - 108: {fileID: 10845222}
   - 114: {fileID: 11445222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,6 +289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56877e3dda754ebaaa607e8697dfac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  damage: 10
+  acceleration: {x: 0, y: 0}
 --- !u!114 &11445220
 MonoBehaviour:
   m_ObjectHideFlags: 1

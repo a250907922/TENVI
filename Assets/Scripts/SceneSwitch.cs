@@ -43,4 +43,8 @@ public class SceneSwitch : MonoBehaviour {
     public void SwitchPick() {
       Application.LoadLevel("Pick");
     }
+
+    public void SwitchSkillSet() {
+      Application.LoadLevel("SkillSet");
+    }
 }

@@ -13,7 +13,7 @@ GameObject:
   - 58: {fileID: 5831780}
   - 50: {fileID: 5031780}
   - 114: {fileID: 11431780}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WhityBomb_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 4: {fileID: 431782}
   - 198: {fileID: 19831782}
   - 199: {fileID: 19931782}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYsphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 4: {fileID: 431784}
   - 198: {fileID: 19831784}
   - 199: {fileID: 19931784}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYdustB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - 4: {fileID: 431786}
   - 198: {fileID: 19831786}
   - 199: {fileID: 19931786}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KYcircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - 4: {fileID: 431788}
   - 108: {fileID: 10831780}
   - 114: {fileID: 11431782}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - 4: {fileID: 431790}
   - 108: {fileID: 10831782}
   - 114: {fileID: 11431784}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

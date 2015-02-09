@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
@@ -13,6 +14,8 @@ public class Enemy : MonoBehaviour {
 	public GameObject expObj;
 	public string TagetObjectName;
 	public static bool IsDeadEnemy = false;
+	public Text damageText;
+	private GameObject canvas;
 
 	void Awake() {
 		InvokeRepeating("Move", 2.0f, 1.0f);
@@ -24,6 +27,7 @@ public class Enemy : MonoBehaviour {
 		score = GameObject.Find ("Score");
 		expObj = GameObject.Find ("ExpObj");
 		StartCoroutine ("SpawnEnemy");
+		canvas = GameObject.Find("Canvas");
 	}
 
 	void Update() {
@@ -56,6 +60,9 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void Damage(int damage){
+		damageText.transform.parent = canvas.transform;
+		damageText.text = "" + damage.ToString();
+		Instantiate(damageText, new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 0), Quaternion.identity);
 		hp -= damage;
 		if(hp <= 0){ //死んだとき
 			EnemyDead();

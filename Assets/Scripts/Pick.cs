@@ -10,6 +10,8 @@ public class Pick : MonoBehaviour {
 	private int pickKind; //ピックの種類数
 	private float dropPosY = 4.0f;
 	public GameObject lizaBlue, lizaGreen, lizaRed, lizaPurple, lizaYellow, lizaGray, lizaWhite, lizaPink;
+	public Image image;
+	public Sprite imageBlue, imageGreen, imageRed, imagePurple, imageYellow, imageGray, imageWhite, imagePink;
 	private GameObject[] prefabs = new GameObject[3];
 	private GameObject pickedPrefab;
 	public ParticleSystem particle;
@@ -127,7 +129,7 @@ public class Pick : MonoBehaviour {
 		setCenterButton = GetButtonFromInt(nums[1]);
 		setRightButton = GetButtonFromInt(nums[2]);
 		setLeftButton.gameObject.SetActive(true);
-		setCenterButton.gameObject.SetActive(true);
+		setCenterButton.gameObject.Setreek;Active(true);
 		setRightButton.gameObject.SetActive(true);
 		setLeftButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-165, 50);
 		setCenterButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 50);
@@ -138,6 +140,26 @@ public class Pick : MonoBehaviour {
 		//falseAllButton();
 		//SetButtons();
 		InstantiatePrefab();
+	}
+
+	//TODO Instantiateしてるから修正
+	void ChangeImage(){
+		if(pickedPrefab == lizaBlue)
+			image.sprite = imageBlue;
+		if(pickedPrefab == lizaGreen)
+			image.sprite = imageGreen;
+		if(pickedPrefab == lizaRed)
+			image.sprite = imageRed;
+		if(pickedPrefab == lizaPurple)
+			image.sprite = imagePurple;
+		if(pickedPrefab == lizaYellow)
+			image.sprite = imageYellow;
+		if(pickedPrefab == lizaGray)
+			image.sprite = imageGray;
+		if(pickedPrefab == lizaWhite)
+			image.sprite = imageWhite;
+		if(pickedPrefab == lizaPink)
+			image.sprite = imagePink;
 	}
 
 	void ToggleAllButton() {
@@ -181,6 +203,7 @@ public class Pick : MonoBehaviour {
 
 	private IEnumerator PickStart() {
 		yield return new WaitForSeconds(1.0f);
+		ChangeImage();
 		ToggleAllButton();
 		yield break;
 	}

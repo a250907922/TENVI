@@ -2,142 +2,253 @@
 using System.Collections;
 
 public class SkillShot : MonoBehaviour {
-	public ParticleSystem energyBlast, ErekiBall, ErekiBall2, fireShot, frameBall, GreenCore, skillAttack, skillAttack2, Spark, WhityBomb, WhityBomb2;
+	public ParticleSystem energyBlast, erekiBall, erekiBall2, fireShot, frameBall, greenCore, skillAttack, skillAttack2, spark, whityBomb, whityBomb2;
+	public GameObject swordFire; // 近接攻撃オブジェクト
 	public int direction;
 	private float DropPosX = 0f;
 	private float DropPosY = 5.5f;
+	private string skillName = "";
+	public static bool isAttack = false; //攻撃してるか
+	public float firePosX; //近接攻撃の出る場所
+	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		//DropPosY = Screen.height;
+		anim = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
 	void Update () {
+		anim.SetBool("isAttack",isAttack); // アニメーション用
+		if(Input.GetKeyDown("x")){ // 近接攻撃
+			SwordFire();
+		}
+
 		if(Input.GetKeyDown("q")){
 			//energyBlast.transform.position = this.gameObject.transform.position;
-			energyBlast.Play();
-			Instantiate(energyBlast, this.gameObject.transform.position, Quaternion.identity);
+			//energyBlast.Play();
+			EnergyBlast();
 		}
 		if(Input.GetKeyDown("w")){
 			//ErekiBall.transform.position = this.gameObject.transform.position;
 			//ErekiBall.Play();
-			Instantiate(ErekiBall, this.gameObject.transform.position, Quaternion.identity);
+			ErekiBall();
 		}
 		if(Input.GetKeyDown("e")){
 			//ErekiBall2.transform.position = this.gameObject.transform.position;
 			//ErekiBall2.Play();
-			Instantiate(ErekiBall2, this.gameObject.transform.position, Quaternion.identity);
+			ErekiBall2();
 		}
 		if(Input.GetKeyDown("r")){
 			//fireShot.transform.position = this.gameObject.transform.position;
 			//fireShot.Play();
-			Instantiate(fireShot, this.gameObject.transform.position, Quaternion.identity);
+			FireShot();
 		}
 		if(Input.GetKeyDown("t")){
 			//frameBall.transform.position = this.gameObject.transform.position;
 			//frameBall.Play();
-			Instantiate(frameBall, this.gameObject.transform.position, Quaternion.identity);
+			FrameBall();
 		}
 		if(Input.GetKeyDown("y")){
 			//GreenCore.transform.position = this.gameObject.transform.position;
 			//GreenCore.Play();
-			Instantiate(GreenCore, this.gameObject.transform.position, Quaternion.identity);
+			GreenCore();
 		}
 		if(Input.GetKeyDown("u")){
 			//skillAttack.transform.position = this.gameObject.transform.position;
 			//skillAttack.Play();
-			Instantiate(skillAttack, this.gameObject.transform.position, Quaternion.identity);
+			SkillAttack();
 		}
 		if(Input.GetKeyDown("i")){
 			//skillAttack2.transform.position = this.gameObject.transform.position;
 			//skillAttack2.Play();
-			if(Player.facingRight){
-				direction = 1;
-			}else{
-				direction = -1;
-			}
-			Instantiate(skillAttack2, new Vector2(this.gameObject.transform.position.x + (direction*2), this.gameObject.transform.position.y), Quaternion.identity);
+			SkillAttack2();
 		}
 		if(Input.GetKeyDown("o")){
 			//Spark.transform.position = this.gameObject.transform.position;
 			//Spark.Play();
-			StartCoroutine("SparkStart");
+			Spark();
 		}
 		if(Input.GetKeyDown("p")){
 			//WhityBomb.transform.position = this.gameObject.transform.position;
 			//WhityBomb.Play();
-			Instantiate(WhityBomb, this.gameObject.transform.position, Quaternion.identity);
+			WhityBomb();
 		}
 		if(Input.GetKeyDown("@")){
-			DropPosX = Random.Range(-8.0f, 8.0f);
-			DropPosY = Random.Range(-3.0f, 0.0f);
-			Instantiate(WhityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
-			DropPosX = Random.Range(-8.0f, 8.0f);
-			DropPosY = Random.Range(-3.0f, 0.0f);
-			Instantiate(WhityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
-			DropPosX = Random.Range(-8.0f, 8.0f);
-			DropPosY = Random.Range(-3.0f, 0.0f);
-			Instantiate(WhityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
-			DropPosX = Random.Range(-8.0f, 8.0f);
-			DropPosY = Random.Range(-3.0f, 0.0f);
-			Instantiate(WhityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
-			DropPosX = Random.Range(-8.0f, 8.0f);
-			DropPosY = Random.Range(-3.0f, 0.0f);
-			Instantiate(WhityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+			WhityBomb2();
 		}
 	}
 
 	private IEnumerator SparkStart() {
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		yield return new WaitForSeconds (0.1f);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		yield return new WaitForSeconds (0.1f);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		yield return new WaitForSeconds (0.1f);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		yield return new WaitForSeconds (0.1f);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 		DropPosX = Random.Range(-8.0f, 8.0f);
-		Instantiate(Spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		Instantiate(spark, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 	}
 
-	public void SkillButton() {
+	private void SwordFire(){
+		isAttack = true; // アニメーション用フラグ
+		StartCoroutine("WaitForAttack");
+		if(Player.facingRight){ // 向きとオブジェクトを出す場所を合わせる
+			firePosX = AttackMelee.fireScale*2.7f;
+		}else{
+			firePosX = -AttackMelee.fireScale*2.7f;
+		}
+		Instantiate(swordFire, new Vector2(transform.position.x + firePosX, transform.position.y), Quaternion.identity);
+	}
 
+	/* 攻撃ディレイ */
+	IEnumerator WaitForAttack() {
+		yield return new WaitForSeconds(0.3f);
+		isAttack = false;
+	}
+
+	private void EnergyBlast(){
+		Instantiate(energyBlast, this.gameObject.transform.position, Quaternion.identity);
+	}
+
+	private void ErekiBall(){
+		Instantiate(erekiBall, this.gameObject.transform.position, Quaternion.identity);
+	}
+
+	private void ErekiBall2(){
+		Instantiate(erekiBall2, this.gameObject.transform.position, Quaternion.identity);
+	}
+
+	private void FireShot(){
+		Instantiate(fireShot, this.gameObject.transform.position, Quaternion.identity);
+	}
+
+	private void FrameBall(){
+		Instantiate(frameBall, this.gameObject.transform.position, Quaternion.identity);
+	}
+
+	private void GreenCore(){
+		Instantiate(greenCore, this.gameObject.transform.position, Quaternion.identity);
+	}
+
+	private void SkillAttack(){
+		Instantiate(skillAttack, this.gameObject.transform.position, Quaternion.identity);
+	}
+
+	private void SkillAttack2(){
+		if(Player.facingRight){
+			direction = 1;
+		}else{
+			direction = -1;
+		}
+		Instantiate(skillAttack2, new Vector2(this.gameObject.transform.position.x + (direction*2), this.gameObject.transform.position.y), Quaternion.identity);
+	}
+
+	private void Spark(){
+		StartCoroutine("SparkStart");
+	}
+
+	private void WhityBomb(){
+		Instantiate(whityBomb, this.gameObject.transform.position, Quaternion.identity);
+	}
+
+	private void WhityBomb2(){
+		DropPosX = Random.Range(-8.0f, 8.0f);
+		DropPosY = Random.Range(-3.0f, 0.0f);
+		Instantiate(whityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		DropPosX = Random.Range(-8.0f, 8.0f);
+		DropPosY = Random.Range(-3.0f, 0.0f);
+		Instantiate(whityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		DropPosX = Random.Range(-8.0f, 8.0f);
+		DropPosY = Random.Range(-3.0f, 0.0f);
+		Instantiate(whityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		DropPosX = Random.Range(-8.0f, 8.0f);
+		DropPosY = Random.Range(-3.0f, 0.0f);
+		Instantiate(whityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+		DropPosX = Random.Range(-8.0f, 8.0f);
+		DropPosY = Random.Range(-3.0f, 0.0f);
+		Instantiate(whityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
+	}
+
+
+	public void SkillButton() {
+		skillName = PlayerPrefs.GetString("skill");
+		switch(skillName){
+			case "default":
+			SwordFire();
+			break;
+			case "energyBlast":
+			EnergyBlast();
+			break;
+			case "erekiBall":
+			ErekiBall();
+			break;
+			case "erekiBall2":
+			ErekiBall2();
+			break;
+			case "fireShot":
+			FireShot();
+			break;
+			case "frameBall":
+			FrameBall();
+			break;
+			case "greenCore":
+			GreenCore();
+			break;
+			case "skillAttack":
+			SkillAttack();
+			break;
+			case "skillAttack2":
+			SkillAttack2();
+			break;
+			case "spark":
+			Spark();
+			break;
+			case "whityBomb":
+			WhityBomb();
+			break;
+			case "whityBomb2":
+			WhityBomb2();
+			break;
+		}
 	}
 }

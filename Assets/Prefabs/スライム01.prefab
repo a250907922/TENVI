@@ -68,10 +68,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d93119c87844c038f3573cbc5b1617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slimeExp: 1
   player: {fileID: 100000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
   score: {fileID: 0}
   expObj: {fileID: 0}
   TagetObjectName: 
+  damageText: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

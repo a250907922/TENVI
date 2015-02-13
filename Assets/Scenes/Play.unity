@@ -138,8 +138,8 @@ Canvas:
   m_GameObject: {fileID: 28683776}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 863743202}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -340,7 +340,7 @@ GameObject:
   - 61: {fileID: 205531304}
   m_Layer: 8
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -549,7 +549,7 @@ GameObject:
   - 114: {fileID: 551933705}
   - 114: {fileID: 551933704}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -570,8 +570,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 75, y: -75}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &551933704
 MonoBehaviour:
@@ -809,8 +809,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -75, y: 65}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &734087382
 MonoBehaviour:
@@ -973,8 +973,8 @@ Canvas:
   m_GameObject: {fileID: 740845015}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 863743202}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1016,8 +1016,8 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 175, y: 55}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 240, y: 80}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &785357150
 MonoBehaviour:
@@ -1306,6 +1306,10 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 6373ba4bcb5324502b2fec2dd7d00e3a, type: 2}
+    - target: {fileID: 100000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
+      propertyPath: m_Name
+      value: lizard_sprites_yellow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
   m_RootGameObject: {fileID: 1541537113}
@@ -1394,8 +1398,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -190, y: 55}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: -260, y: 75}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1014557616
 MonoBehaviour:
@@ -1558,7 +1562,7 @@ GameObject:
   - 114: {fileID: 1541537114}
   - 114: {fileID: 1541537120}
   m_Layer: 9
-  m_Name: Player
+  m_Name: lizard_sprites_yellow
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1580,14 +1584,10 @@ MonoBehaviour:
   moveForce: 200
   jumpForce: 200
   damageForce: 150
-  isAttack: 0
   bulletAttack: 0
-  meleeAttack: 0
   isDamaged: 0
   BulletPrefab: {fileID: 100000, guid: a3ddfb51c1ab0486fb332c9861ebe9e2, type: 2}
-  Sword_Fire: {fileID: 100000, guid: c1e07d49482d940bb9f4c5906376ec04, type: 2}
   hpBar: {fileID: 28683776}
-  firePosX: 0
   mutekiTime: 1
   flashInterval: .0199999996
 --- !u!50 &1541537115
@@ -1681,17 +1681,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyBlast: {fileID: 19850726, guid: 6bcf3f754221349a48e91230299cafc4, type: 2}
-  ErekiBall: {fileID: 19850898, guid: 165389a8c8aae40d3895051a4aa08caf, type: 2}
-  ErekiBall2: {fileID: 19855164, guid: 6d065c8fc1f7344c2a2e681c710b9b47, type: 2}
+  erekiBall: {fileID: 19850898, guid: 165389a8c8aae40d3895051a4aa08caf, type: 2}
+  erekiBall2: {fileID: 19855164, guid: 6d065c8fc1f7344c2a2e681c710b9b47, type: 2}
   fireShot: {fileID: 19825960, guid: 307139552a10448ae8a81be9257563d8, type: 2}
   frameBall: {fileID: 19863214, guid: b04ce3f4784854adea0e114c5f793269, type: 2}
-  GreenCore: {fileID: 19828170, guid: 4dc8c05bab5e94e4da2b06f961dc246a, type: 2}
+  greenCore: {fileID: 19828170, guid: 4dc8c05bab5e94e4da2b06f961dc246a, type: 2}
   skillAttack: {fileID: 19875014, guid: 0b7350a5524954f0ca2d4880c400d1fd, type: 2}
   skillAttack2: {fileID: 19830260, guid: 7e299cbffe5d743b98ecdbc5d566cd1f, type: 2}
-  Spark: {fileID: 19809302, guid: 740b8e922a0874f31aba73ad0be92564, type: 2}
-  WhityBomb: {fileID: 19845220, guid: 471c0cd8b507e40da86bf3deeb97d4d8, type: 2}
-  WhityBomb2: {fileID: 19831780, guid: 88b669e39b247489291eb05ef623f87f, type: 2}
+  spark: {fileID: 19809302, guid: 740b8e922a0874f31aba73ad0be92564, type: 2}
+  whityBomb: {fileID: 19845220, guid: 471c0cd8b507e40da86bf3deeb97d4d8, type: 2}
+  whityBomb2: {fileID: 19831780, guid: 88b669e39b247489291eb05ef623f87f, type: 2}
+  swordFire: {fileID: 100000, guid: c1e07d49482d940bb9f4c5906376ec04, type: 2}
   direction: 0
+  firePosX: 0
 --- !u!1 &1544277803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1743,7 @@ MonoBehaviour:
   m_Color: {r: .195999995, g: .195999995, b: .195999995, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9518d366095f54c449526872006048d1, type: 3}
-    m_FontSize: 20
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1900,8 +1902,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 75, y: 55}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 100, y: 80}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1848606726
 MonoBehaviour:

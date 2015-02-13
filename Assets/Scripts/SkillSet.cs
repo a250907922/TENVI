@@ -14,7 +14,7 @@ public class SkillSet : MonoBehaviour {
 	}
 
 	public void Skill1(){
-		PlayerPrefs.SetString("skill", "defalut");
+		PlayerPrefs.SetString("skill", "default");
 	}
 	public void Skill2(){
 		PlayerPrefs.SetString("skill", "energyBlast");

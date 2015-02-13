@@ -10,18 +10,14 @@ public class Player : MonoBehaviour {
 	public float damageForce = 100.0f;
 
 	public static bool facingRight = true; //方向判定用 右向いてるときはtrue
-	public bool isAttack = false; //攻撃してるか
 	public bool bulletAttack = false;
-	public bool meleeAttack = false;
 	bool grounded = false; //地面についてるか
 	private Animator anim; //アニメーション用
 	public static bool isRightEnemy; //自分より敵が右にいるか
 	public bool isDamaged; //ダメージを受けてる状態
 
 	public GameObject BulletPrefab; // 弾オブジェクト
-	public GameObject Sword_Fire; // 近接攻撃オブジェクト
 	public GameObject hpBar; //HPバー
-	public float firePosX; //近接攻撃の出る場所
 	public float mutekiTime = 1.0f;
 	public float flashInterval = 0.02f;
 
@@ -32,24 +28,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () {
-		/* 地面に接触しているか */
-		grounded = Physics2D.Linecast(transform.position,
-		transform.position - transform.up * 1.0f,
-		1 << LayerMask.NameToLayer("Ground"));
-
-		if(Input.GetKeyDown("up") && grounded)
+		if(Input.GetKeyDown("up"))
 			Jump();
-
-		anim.SetBool("isAttack",isAttack); // アニメーション用
-		if(Input.GetKeyDown("x")){ // 近接攻撃
-			isAttack = true; // アニメーション用フラグ
-			meleeAttack = true; // 攻撃フラグ
-			if(facingRight){ // 向きとオブジェクトを出す場所を合わせる
-				firePosX = AttackMelee.fireScale*2.7f;
-			}else{
-				firePosX = -AttackMelee.fireScale*2.7f;
-			}
-		}
 
 		if(Input.GetKeyDown("b")){ // 弾攻撃
 			bulletAttack = true;
@@ -70,13 +50,6 @@ public class Player : MonoBehaviour {
 			Move(1);
 		}
 
-		/* 攻撃 */
-		if(meleeAttack){
-			StartCoroutine("WaitForAttack");
-			Instantiate(Sword_Fire, new Vector2(transform.position.x + firePosX, transform.position.y), Quaternion.identity);
-			meleeAttack = false;
-		}
-
 		/* 弾発射 */
 		if(bulletAttack){
 			StartCoroutine("WaitForAttack");
@@ -86,6 +59,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
+		/* 地面に接触しているか */
+		if(col.gameObject.tag == "Ground")
+			grounded = true;
+
 		/* ダメージ判定 */
 		if(col.gameObject.tag == "Enemy"){
 			if(!isDamaged){
@@ -106,10 +83,17 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionExit2D(Collision2D col){
+		if(col.gameObject.tag == "Ground")
+			grounded = false;
+	}
+
 	//ジャンプ
 	public void Jump() {
-		//anim.SetTrigger("Jump");
-		rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+		if(grounded){
+			//anim.SetTrigger("Jump");
+			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+		}
 	}
 
 	//移動
@@ -139,12 +123,6 @@ public class Player : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-	}
-
-	/* 攻撃ディレイ */
-	IEnumerator WaitForAttack() {
-		yield return new WaitForSeconds(0.3f);
-		isAttack = false;
 	}
 
 	/* ダメージ受けた後の無敵時間 */

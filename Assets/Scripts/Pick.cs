@@ -98,9 +98,9 @@ public class Pick : MonoBehaviour {
 	void InstantiatePrefab() {
 		int[] randomInt = new int[3];
 		randomInt = GetRandomNums();
-		prefabs[0] = Instantiate(GetPrefabFromInt(randomInt[0]), new Vector2(-4, dropPosY), Quaternion.identity) as GameObject;
+		prefabs[0] = Instantiate(GetPrefabFromInt(randomInt[0]), new Vector2(-3, dropPosY), Quaternion.identity) as GameObject;
 		prefabs[1] = Instantiate(GetPrefabFromInt(randomInt[1]), new Vector2(0, dropPosY), Quaternion.identity) as GameObject;
-		prefabs[2] = Instantiate(GetPrefabFromInt(randomInt[2]), new Vector2(4, dropPosY), Quaternion.identity) as GameObject;
+		prefabs[2] = Instantiate(GetPrefabFromInt(randomInt[2]), new Vector2(3, dropPosY), Quaternion.identity) as GameObject;
 	}
 /*
 	Button GetButtonFromInt(int num) {

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Pick : MonoBehaviour {
-	private int pickKind; //ピックの種類数
 	private float dropPosY = 4.0f;
 	public GameObject lizaBlue, lizaGreen, lizaRed, lizaPurple, lizaYellow, lizaGray, lizaWhite, lizaPink;
 	public GameObject hp, power, defence, intelligence, wisdom;
@@ -16,34 +16,53 @@ public class Pick : MonoBehaviour {
 	public Button startButton, leftButton, centerButton, rightButton;
 	private int hpPoint, pwrPoint, defPoint, intPoint, wisPoint = 0;
 	public Text hpText, pwrText, defText, intText, wisText;
+	private float[] probs;
 
 	void Start () {
 		leftButton.interactable = false;
 		centerButton.interactable = false;
 		rightButton.interactable = false;
-		pickKind = 13;//case + 1
+		image.sprite = imageBlue;
+		//出る確率
+		probs = new float[] {1,1,1,1,1,1,1,1, 3,3,3,3,3};
 	}
 
 	void Update () {
+		hpText.text = hpPoint.ToString();
+		pwrText.text = pwrPoint.ToString();
+		defText.text = defPoint.ToString();
+		intText.text = intPoint.ToString();
+		wisText.text = wisPoint.ToString();
 	}
 
 	//被らない3つの数字を0以上pickKind未満からランダムで取得
 	int[] GetRandomNums(){
 		int[] returnInt = new int[3];
-		int tmpInt;
-		returnInt[0] = Random.Range(0, pickKind);
-		returnInt[1] = Random.Range(0, pickKind);
-		returnInt[2] = Random.Range(0, pickKind);
-		tmpInt = returnInt[0];
-		while(returnInt[0] == tmpInt){
-			tmpInt = Random.Range(0, pickKind);
+		returnInt[0] = Choose(probs);
+		returnInt[1] = Choose(probs);
+		returnInt[2] = Choose(probs);
+		while(returnInt[0] == returnInt[1]){
+			returnInt[1] = Choose(probs);
 		}
-		returnInt[1] = tmpInt;
-		while(returnInt[0] == tmpInt || returnInt[1] == tmpInt){
-			tmpInt = Random.Range(0, pickKind);
+		while(returnInt[0] == returnInt[2] || returnInt[1] == returnInt[2]){
+			returnInt[2] = Choose(probs);
 		}
-		returnInt[2] = tmpInt;
 		return returnInt;
+	}
+
+	private int Choose(float[] probs){
+		float total = 0.0f;
+		foreach(float elem in probs) {
+			total += elem;
+		}
+		float randomPoint = Random.value * total;
+		for(int i=0; i<probs.Length; i++){
+			if(randomPoint < probs[i])
+				return i;
+			else
+				randomPoint -= probs[i];
+		}
+		return probs.Length - 1;
 	}
 
 	GameObject GetPrefabFromInt(int num) {
@@ -110,42 +129,96 @@ public class Pick : MonoBehaviour {
 	}
 
 	void ChangeImage(){
-		if(pickedPrefab == lizaBlue)
+		if(pickedPrefab == lizaBlue){
+			if(image.sprite == imageBlue){
+				hpPoint++;
+				pwrPoint++;
+				defPoint++;
+				intPoint++;
+				wisPoint++;
+			}
 			image.sprite = imageBlue;
-		if(pickedPrefab == lizaGreen)
+		}
+		if(pickedPrefab == lizaGreen){
+			if(image.sprite == imageGreen){
+				hpPoint++;
+				pwrPoint++;
+				defPoint++;
+				intPoint++;
+				wisPoint++;
+			}
 			image.sprite = imageGreen;
-		if(pickedPrefab == lizaRed)
+		}
+		if(pickedPrefab == lizaRed){
+			if(image.sprite == imageRed){
+				hpPoint++;
+				pwrPoint++;
+				defPoint++;
+				intPoint++;
+				wisPoint++;
+			}
 			image.sprite = imageRed;
-		if(pickedPrefab == lizaPurple)
+		}
+		if(pickedPrefab == lizaPurple){
+			if(image.sprite == imagePurple){
+				hpPoint++;
+				pwrPoint++;
+				defPoint++;
+				intPoint++;
+				wisPoint++;
+			}
 			image.sprite = imagePurple;
-		if(pickedPrefab == lizaYellow)
+		}
+		if(pickedPrefab == lizaYellow){
+			if(image.sprite == imageYellow){
+				hpPoint++;
+				pwrPoint++;
+				defPoint++;
+				intPoint++;
+				wisPoint++;
+			}
 			image.sprite = imageYellow;
-		if(pickedPrefab == lizaGray)
+		}
+		if(pickedPrefab == lizaGray){
+			if(image.sprite == imageGray){
+				hpPoint++;
+				pwrPoint++;
+				defPoint++;
+				intPoint++;
+				wisPoint++;
+			}
 			image.sprite = imageGray;
-		if(pickedPrefab == lizaWhite)
+		}
+		if(pickedPrefab == lizaWhite){
+			if(image.sprite == imageWhite){
+				hpPoint++;
+				pwrPoint++;
+				defPoint++;
+				intPoint++;
+				wisPoint++;
+			}
 			image.sprite = imageWhite;
-		if(pickedPrefab == lizaPink)
+		}
+		if(pickedPrefab == lizaPink){
+			if(image.sprite == imagePink){
+				hpPoint++;
+				pwrPoint++;
+				defPoint++;
+				intPoint++;
+				wisPoint++;
+			}
 			image.sprite = imagePink;
-		if(pickedPrefab == hp){
+		}
+		if(pickedPrefab == hp)
 			hpPoint++;
-			hpText.text = hpPoint.ToString();
-		}
-		if(pickedPrefab == power){
+		if(pickedPrefab == power)
 			pwrPoint++;
-			pwrText.text = pwrPoint.ToString();
-		}
-		if(pickedPrefab == defence){
+		if(pickedPrefab == defence)
 			defPoint++;
-			defText.text = defPoint.ToString();
-		}
-		if(pickedPrefab == intelligence){
+		if(pickedPrefab == intelligence)
 			intPoint++;
-			intText.text = intPoint.ToString();
-		}
-		if(pickedPrefab == wisdom){
+		if(pickedPrefab == wisdom)
 			wisPoint++;
-			wisText.text = wisPoint.ToString();
-		}
 	}
 
 	void ToggleAllButton() {

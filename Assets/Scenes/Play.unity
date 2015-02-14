@@ -1693,6 +1693,7 @@ MonoBehaviour:
   swordFire: {fileID: 100000, guid: c1e07d49482d940bb9f4c5906376ec04, type: 2}
   direction: 0
   firePosX: 0
+  skillButton: {fileID: 734087382}
 --- !u!1 &1544277803
 GameObject:
   m_ObjectHideFlags: 0

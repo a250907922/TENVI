@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SkillShot : MonoBehaviour {
@@ -11,6 +12,9 @@ public class SkillShot : MonoBehaviour {
 	public static bool isAttack = false; //攻撃してるか
 	public float firePosX; //近接攻撃の出る場所
 	private Animator anim;
+	public Button skillButton;
+	private float cd = 1.0f;
+	private float cdr = 0.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -209,7 +213,6 @@ public class SkillShot : MonoBehaviour {
 		Instantiate(whityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
 	}
 
-
 	public void SkillButton() {
 		skillName = PlayerPrefs.GetString("skill");
 		switch(skillName){
@@ -250,5 +253,12 @@ public class SkillShot : MonoBehaviour {
 			WhityBomb2();
 			break;
 		}
+		StartCoroutine("CoolDown");
+	}
+
+	private IEnumerator CoolDown(){
+		skillButton.interactable = false;
+		yield return new WaitForSeconds(cd * (100.0f - cdr)/100.0f);
+		skillButton.interactable = true;
 	}
 }

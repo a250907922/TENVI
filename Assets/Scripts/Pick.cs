@@ -3,10 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class Pick : MonoBehaviour {
-	//public Button taneButton, kumaButton, lizaButton;
-	//RectTransform taneRect, kumaRect, lizaRect;
-	//Vector2 leftPickPos, centerPickPos, rightPickPos;
-	//public GameObject buttons;
 	private int pickKind; //ピックの種類数
 	private float dropPosY = 4.0f;
 	public GameObject lizaBlue, lizaGreen, lizaRed, lizaPurple, lizaYellow, lizaGray, lizaWhite, lizaPink;
@@ -18,17 +14,6 @@ public class Pick : MonoBehaviour {
 	public Button startButton, leftButton, centerButton, rightButton;
 
 	void Start () {
-		/*
-		leftPickPos = new Vector2(-165, 125);
-		centerPickPos = new Vector2(-165, 125);
-		rightPickPos = new Vector2(-165, 125);
-		taneRect = taneButton.GetComponent<RectTransform>();
-		kumaRect = kumaButton.GetComponent<RectTransform>();
-		lizaRect = lizaButton.GetComponent<RectTransform>();
-		falseAllButton();
-		pickKind = buttons.transform.childCount;
-		SetButtons();
-		*/
 		leftButton.interactable = false;
 		centerButton.interactable = false;
 		rightButton.interactable = false;
@@ -37,13 +22,6 @@ public class Pick : MonoBehaviour {
 
 	void Update () {
 	}
-/*
-	void falseAllButton() {
-		taneButton.gameObject.SetActive(false);
-		kumaButton.gameObject.SetActive(false);
-		lizaButton.gameObject.SetActive(false);
-	}
-*/
 
 	//被らない3つの数字を0以上pickKind未満からランダムで取得
 	int[] GetRandomNums(){
@@ -102,40 +80,7 @@ public class Pick : MonoBehaviour {
 		prefabs[1] = Instantiate(GetPrefabFromInt(randomInt[1]), new Vector2(0, dropPosY), Quaternion.identity) as GameObject;
 		prefabs[2] = Instantiate(GetPrefabFromInt(randomInt[2]), new Vector2(3, dropPosY), Quaternion.identity) as GameObject;
 	}
-/*
-	Button GetButtonFromInt(int num) {
-		Button returnButton = taneButton;
-		switch(num){
-			case 0:
-				returnButton = taneButton;
-				break;
-			case 1:
-				returnButton = kumaButton;
-				break;
-			case 2:
-				returnButton = lizaButton;
-				break;
-		}
-		return returnButton;
-	}
 
-	void SetButtons() {
-		int[] nums = new int[3];
-		nums = GetRandomNums();
-		Button setLeftButton;
-		Button setCenterButton;
-		Button setRightButton;
-		setLeftButton = GetButtonFromInt(nums[0]);
-		setCenterButton = GetButtonFromInt(nums[1]);
-		setRightButton = GetButtonFromInt(nums[2]);
-		setLeftButton.gameObject.SetActive(true);
-		setCenterButton.gameObject.Setreek;Active(true);
-		setRightButton.gameObject.SetActive(true);
-		setLeftButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-165, 50);
-		setCenterButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 50);
-		setRightButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(165, 50);
-	}
-*/
 	void NextPick() {
 		//falseAllButton();
 		//SetButtons();

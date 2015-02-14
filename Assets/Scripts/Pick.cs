@@ -6,18 +6,22 @@ public class Pick : MonoBehaviour {
 	private int pickKind; //ピックの種類数
 	private float dropPosY = 4.0f;
 	public GameObject lizaBlue, lizaGreen, lizaRed, lizaPurple, lizaYellow, lizaGray, lizaWhite, lizaPink;
+	public GameObject hp, power, defence, intelligence, wisdom;
 	public Image image;
 	public Sprite imageBlue, imageGreen, imageRed, imagePurple, imageYellow, imageGray, imageWhite, imagePink;
+	private GameObject[] oriPrefab = new GameObject[3];
 	private GameObject[] prefabs = new GameObject[3];
-	private GameObject pickedPrefab;
+	private GameObject destroyPrefab, pickedPrefab;
 	public ParticleSystem particle;
 	public Button startButton, leftButton, centerButton, rightButton;
+	private int hpPoint, pwrPoint, defPoint, intPoint, wisPoint = 0;
+	public Text hpText, pwrText, defText, intText, wisText;
 
 	void Start () {
 		leftButton.interactable = false;
 		centerButton.interactable = false;
 		rightButton.interactable = false;
-		pickKind = 8;
+		pickKind = 13;//case + 1
 	}
 
 	void Update () {
@@ -69,6 +73,21 @@ public class Pick : MonoBehaviour {
 			case 7:
 			returnPrefab = lizaPink;
 			break;
+			case 8:
+			returnPrefab = hp;
+			break;
+			case 9:
+			returnPrefab = power;
+			break;
+			case 10:
+			returnPrefab = defence;
+			break;
+			case 11:
+			returnPrefab = intelligence;
+			break;
+			case 12:
+			returnPrefab = wisdom;
+			break;
 		}
 		return returnPrefab;
 	}
@@ -76,9 +95,12 @@ public class Pick : MonoBehaviour {
 	void InstantiatePrefab() {
 		int[] randomInt = new int[3];
 		randomInt = GetRandomNums();
-		prefabs[0] = Instantiate(GetPrefabFromInt(randomInt[0]), new Vector2(-3, dropPosY), Quaternion.identity) as GameObject;
-		prefabs[1] = Instantiate(GetPrefabFromInt(randomInt[1]), new Vector2(0, dropPosY), Quaternion.identity) as GameObject;
-		prefabs[2] = Instantiate(GetPrefabFromInt(randomInt[2]), new Vector2(3, dropPosY), Quaternion.identity) as GameObject;
+		oriPrefab[0] = GetPrefabFromInt(randomInt[0]);
+		oriPrefab[1] = GetPrefabFromInt(randomInt[1]);
+		oriPrefab[2] = GetPrefabFromInt(randomInt[2]);
+		prefabs[0] = Instantiate(oriPrefab[0], new Vector2(-3, dropPosY), Quaternion.identity) as GameObject;
+		prefabs[1] = Instantiate(oriPrefab[1], new Vector2(0, dropPosY), Quaternion.identity) as GameObject;
+		prefabs[2] = Instantiate(oriPrefab[2], new Vector2(3, dropPosY), Quaternion.identity) as GameObject;
 	}
 
 	void NextPick() {
@@ -87,7 +109,6 @@ public class Pick : MonoBehaviour {
 		InstantiatePrefab();
 	}
 
-	//TODO Instantiateしてるから修正
 	void ChangeImage(){
 		if(pickedPrefab == lizaBlue)
 			image.sprite = imageBlue;
@@ -105,6 +126,26 @@ public class Pick : MonoBehaviour {
 			image.sprite = imageWhite;
 		if(pickedPrefab == lizaPink)
 			image.sprite = imagePink;
+		if(pickedPrefab == hp){
+			hpPoint++;
+			hpText.text = hpPoint.ToString();
+		}
+		if(pickedPrefab == power){
+			pwrPoint++;
+			pwrText.text = pwrPoint.ToString();
+		}
+		if(pickedPrefab == defence){
+			defPoint++;
+			defText.text = defPoint.ToString();
+		}
+		if(pickedPrefab == intelligence){
+			intPoint++;
+			intText.text = intPoint.ToString();
+		}
+		if(pickedPrefab == wisdom){
+			wisPoint++;
+			wisText.text = wisPoint.ToString();
+		}
 	}
 
 	void ToggleAllButton() {
@@ -115,7 +156,8 @@ public class Pick : MonoBehaviour {
 
 	public void LeftButton() {
 		prefabs[0].layer = 17;
-		pickedPrefab = prefabs[0];
+		pickedPrefab = oriPrefab[0];
+		destroyPrefab = prefabs[0];
 		GameObject.Destroy(prefabs[1]);
 		GameObject.Destroy(prefabs[2]);
 		StartCoroutine("Picked");
@@ -124,8 +166,9 @@ public class Pick : MonoBehaviour {
 
 	public void CenterButton() {
 		prefabs[1].layer = 17;
+		pickedPrefab = oriPrefab[1];
 		GameObject.Destroy(prefabs[0]);
-		pickedPrefab = prefabs[1];
+		destroyPrefab = prefabs[1];
 		GameObject.Destroy(prefabs[2]);
 		StartCoroutine("Picked");
 		NextPick();
@@ -133,9 +176,10 @@ public class Pick : MonoBehaviour {
 
 	public void RightButton() {
 		prefabs[2].layer = 17;
+		pickedPrefab = oriPrefab[2];
 		GameObject.Destroy(prefabs[0]);
 		GameObject.Destroy(prefabs[1]);
-		pickedPrefab = prefabs[2];
+		destroyPrefab = prefabs[2];
 		StartCoroutine("Picked");
 		NextPick();
 	}
@@ -148,7 +192,6 @@ public class Pick : MonoBehaviour {
 
 	private IEnumerator PickStart() {
 		yield return new WaitForSeconds(1.0f);
-		ChangeImage();
 		ToggleAllButton();
 		yield break;
 	}
@@ -156,9 +199,10 @@ public class Pick : MonoBehaviour {
 	private IEnumerator Picked() {
 		ToggleAllButton();
 		yield return new WaitForSeconds(0.9f);
-		particle.transform.position = pickedPrefab.transform.position;
+		particle.transform.position = destroyPrefab.transform.position;
 		particle.Play();
-		Destroy(pickedPrefab);
+		Destroy(destroyPrefab);
+		ChangeImage();
 		ToggleAllButton();
 		yield break;
 	}

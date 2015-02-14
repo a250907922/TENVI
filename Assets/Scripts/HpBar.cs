@@ -8,8 +8,8 @@ public class HpBar : MonoBehaviour {
     public GameObject gameManager;
     public int hitPoint; //現在のHP
     private int maxHp; //HP最大値
-    float rectWidth; //HPゲージの長さ
-    float aDamageWidth; //1ダメージで減るHPゲージの長さ
+    private float rectWidth; //HPゲージの長さ
+    private float aDamageWidth; //1ダメージで減るHPゲージの長さ
 
     void Awake() {
         hitPoint = PlayerPrefs.GetInt("hitPoint");

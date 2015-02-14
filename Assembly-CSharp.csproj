@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\SkillShot.cs" />
      <Compile Include="Assets\Scripts\Skills\EnergyBlast.cs" />
      <Compile Include="Assets\Scripts\Skills\ErekiBall.cs" />
+     <Compile Include="Assets\Scripts\Skills\ErekiBall2.cs" />
      <Compile Include="Assets\Scripts\Skills\FireShot.cs" />
      <Compile Include="Assets\Scripts\Skills\FrameBall.cs" />
      <Compile Include="Assets\Scripts\Skills\GreenCore.cs" />

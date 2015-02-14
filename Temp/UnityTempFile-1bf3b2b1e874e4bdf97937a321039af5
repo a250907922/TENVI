@@ -59,6 +59,7 @@
 'Assets/Scripts/SkillShot.cs'
 'Assets/Scripts/Skills/EnergyBlast.cs'
 'Assets/Scripts/Skills/ErekiBall.cs'
+'Assets/Scripts/Skills/ErekiBall2.cs'
 'Assets/Scripts/Skills/FireShot.cs'
 'Assets/Scripts/Skills/FrameBall.cs'
 'Assets/Scripts/Skills/GreenCore.cs'

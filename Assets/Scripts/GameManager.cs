@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	void GameClear() {
+	void StageClear() {
 		stage.UnlockStage(nStage+1);
 	}
 

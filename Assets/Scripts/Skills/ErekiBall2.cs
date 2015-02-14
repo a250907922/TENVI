@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class ErekiBall : MonoBehaviour {
+public class ErekiBall2 : MonoBehaviour {
 	public int damage = 5;
-	public float speed = 1.0f;
+	public float speed = 0.1f;
 	private float lifeTime = 1.0f;
 
 	void Start () {

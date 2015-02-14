@@ -1308,7 +1308,7 @@ Prefab:
       objectReference: {fileID: 6200000, guid: 6373ba4bcb5324502b2fec2dd7d00e3a, type: 2}
     - target: {fileID: 100000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
       propertyPath: m_Name
-      value: lizard_sprites_yellow
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 835a3a6b38efe4b6c8cdcc154f5cf6ad, type: 2}
@@ -1352,7 +1352,6 @@ MonoBehaviour:
   levelUpCanvas: {fileID: 740845015}
   levelUpText: {fileID: 102513246}
   image: {fileID: 185562059}
-  isLevelUp: 0
 --- !u!4 &930523995
 Transform:
   m_ObjectHideFlags: 0
@@ -1562,7 +1561,7 @@ GameObject:
   - 114: {fileID: 1541537114}
   - 114: {fileID: 1541537120}
   m_Layer: 9
-  m_Name: lizard_sprites_yellow
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1853,7 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8505fb0c86646b8adc41fd1264b331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 100000, guid: 44d235e89d2e146d6bffcc8b6f9627f8, type: 2}
+  enemyPrefab: {fileID: 134038, guid: d0920a6ce5ac445239075551cac559de, type: 2}
   stage: {fileID: 0}
   nStage: 0
 --- !u!4 &1710797902

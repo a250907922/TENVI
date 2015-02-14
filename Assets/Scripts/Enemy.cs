@@ -4,14 +4,18 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 	//private int Point = 10; //スコア用
-	private int hp = 10;
+	public int startHp = 10;
+	public int currentHp;
+	private GameObject hpBar;
+	private Vector2 scale = new Vector2(1.5f, 1.5f);
 	public int slimeExp = 1;
 	private float maxSpeed = 1.0f;
 	private float moveForce = 200; //加速力(移動時に加える力)
+	private bool facingRight = false;
 
-	public GameObject player;
-	public GameObject score;
-	public GameObject expObj;
+	private GameObject player;
+	//private GameObject score;
+	private GameObject expObj;
 	public string TagetObjectName;
 	public static bool IsDeadEnemy = false;
 	public Text damageText;
@@ -22,10 +26,14 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Start(){
+		currentHp = startHp;
 		GameObject.Find(TagetObjectName);
-		score = GameObject.Find ("Score");
+		player = GameObject.Find("Player");
+		//score = GameObject.Find ("Score");
 		expObj = GameObject.Find ("ExpObj");
 		StartCoroutine ("SpawnEnemy");
+		hpBar = gameObject.transform.FindChild("HP").gameObject;
+		hpBar.GetComponent<SpriteRenderer>().enabled = false;
 	}
 
 	void Update() {
@@ -48,8 +56,12 @@ public class Enemy : MonoBehaviour {
 		float hor;
 		if((player.transform.position.x - this.transform.position.x) > 0){
 			hor = 1;
+			if(!facingRight)
+				Flip();
 		} else {
 			hor = -1;
+			if(facingRight)
+				Flip();
 		}
 		if(hor * rigidbody2D.velocity.x < maxSpeed) //maxSpeedより小さかったら力を加える
 			rigidbody2D.AddForce(Vector2.right * hor * moveForce);
@@ -57,12 +69,24 @@ public class Enemy : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 	}
 
+	void Flip () {
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
+
 	public void Damage(int damage){
 		//damageText.transform.parent = canvas.transform;
 		//damageText.text = "" + damage.ToString();
 		//Instantiate(damageText, new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 0), Quaternion.identity);
-		hp -= damage;
-		if(hp <= 0){ //死んだとき
+		hpBar.GetComponent<SpriteRenderer>().enabled = true;
+		hpBar.transform.localScale = scale;
+		currentHp -= damage;
+		float currentSize;
+		currentSize = (float)currentHp/startHp * 1.5f;
+		hpBar.transform.localScale = new Vector2(currentSize, currentSize);
+		if(currentHp <= 0){ //死んだとき
 			EnemyDead();
 		}
 	}

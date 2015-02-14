@@ -17,7 +17,7 @@ public class ExperienceManagement : MonoBehaviour {
     public Image image;//経験値ゲージ画像
     float rectWidth;//経験値ゲージの最大長さ
     float aExpWidth;//1expの経験値ゲージの長さ
-    public bool isLevelUp = false;
+    private Animator anim;
 
     void Awake () {
         exp = PlayerPrefs.GetInt("exp"); // 現在の経験値
@@ -28,6 +28,7 @@ public class ExperienceManagement : MonoBehaviour {
     }
 
     void Start () {
+      anim = levelUpText.GetComponent<Animator>();
         player = GameObject.Find ("Player");
         //EXPGUI
         aExpWidth = image.rectTransform.sizeDelta.x/RequiredExpForLevelUp();
@@ -89,9 +90,9 @@ public class ExperienceManagement : MonoBehaviour {
     private IEnumerator ShowLevelUp() {
         levelUpText.transform.Translate(player.transform.position.x, player.transform.position.y, 0);
         levelUpCanvas.SetActive(true);
-        isLevelUp = true;
+        anim.SetBool("isLevelUp", true);
         yield return new WaitForSeconds(1.5f);
-        isLevelUp = false;
+        anim.SetBool("isLevelUp", false);
         levelUpCanvas.SetActive(false);
     }
 }

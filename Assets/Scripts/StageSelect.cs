@@ -63,6 +63,7 @@ public class StageSelect : MonoBehaviour {
 	public void Stage1Button() {
 		stageNum = 1;
 		Application.LoadLevel("Play");
+		GameManager.challengeMode = false;
 	}
 	public void Stage2Button() {
 		stageNum = 2;

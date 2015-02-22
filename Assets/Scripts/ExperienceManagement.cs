@@ -20,11 +20,13 @@ public class ExperienceManagement : MonoBehaviour {
     private Animator anim;
 
     void Awake () {
-        exp = PlayerPrefs.GetInt("exp"); // 現在の経験値
-        allExp = PlayerPrefs.GetInt("allExp");
-        playerLevel = PlayerPrefs.GetInt("playerLevel");
-        stsPoint = PlayerPrefs.GetInt("stsPoint");
-        levelUpCanvas.SetActive(false);
+      if(GameManager.challengeMode)
+        image.gameObject.SetActive(false);
+      exp = PlayerPrefs.GetInt("exp"); // 現在の経験値
+      allExp = PlayerPrefs.GetInt("allExp");
+      playerLevel = PlayerPrefs.GetInt("playerLevel");
+      stsPoint = PlayerPrefs.GetInt("stsPoint");
+      levelUpCanvas.SetActive(false);
     }
 
     void Start () {

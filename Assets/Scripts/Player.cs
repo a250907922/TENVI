@@ -108,7 +108,7 @@ public class Player : MonoBehaviour {
 		}
 			//力を加える
 		if(h * rigidbody2D.velocity.x < maxSpeed)
-			rigidbody2D.AddForce(Vector2.right * h * moveForce);
+			rigidbody2D.AddForce(Vector2.right * h/3 * moveForce);
 
 		//maxspeed超えないように
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)

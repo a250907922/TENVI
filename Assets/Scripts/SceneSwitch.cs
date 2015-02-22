@@ -25,7 +25,7 @@ public class SceneSwitch : MonoBehaviour {
             }
 
     public void SwitchPlay() {
-        Application.LoadLevel("StageSelect");
+        Application.LoadLevel("Play");
     }
 
     public void SwitchStatus() {

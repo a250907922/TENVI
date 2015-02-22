@@ -20,9 +20,23 @@ public class Enemy : MonoBehaviour {
 	public static bool IsDeadEnemy = false;
 	public Text damageText;
 
+	private bool challenge;
+	private int chalPwr;
+	private int chalInt;
+	private int power;
+	private int intelligence;
+
 	void Awake() {
+		challenge = GameManager.challengeMode;
 		InvokeRepeating("Move", 2.0f, 1.0f);
 		gameObject.layer = 16;
+		if(challenge){
+			chalPwr = PlayerPrefs.GetInt("ChalPwr");
+			chalInt = PlayerPrefs.GetInt("ChalInt");
+		}else{
+			power = PlayerPrefs.GetInt("power");
+			intelligence = PlayerPrefs.GetInt("intelligence");
+		}
 	}
 
 	void Start(){
@@ -77,12 +91,13 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void Damage(int damage){
-		//damageText.transform.parent = canvas.transform;
-		//damageText.text = "" + damage.ToString();
-		//Instantiate(damageText, new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 0), Quaternion.identity);
 		hpBar.GetComponent<SpriteRenderer>().enabled = true;
 		hpBar.transform.localScale = scale;
-		currentHp -= damage;
+		if(Critical()){
+			currentHp -= (damage+chalPwr) * 2;
+		}else{
+			currentHp -= damage + power;
+		}
 		float currentSize;
 		currentSize = (float)currentHp/startHp * 1.5f;
 		hpBar.transform.localScale = new Vector2(currentSize, currentSize);
@@ -91,9 +106,24 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
+	private bool Critical() {
+		bool critical = false;
+		int randomInt = Random.Range(0,100);
+		if(challenge){
+			if(chalInt > randomInt)
+				critical = true;
+		}else{
+			if(intelligence > randomInt)
+				critical = true;
+		}
+		return critical;
+	}
+
 	void EnemyDead() {
 		Destroy(gameObject);
+		GameManager.EnemyDeadCount();
 		//score.SendMessage("UpdateScore", Point);
-		expObj.SendMessage("GetExperience", slimeExp);
+		if(!challenge)
+			expObj.SendMessage("GetExperience", slimeExp);
 	}
 }

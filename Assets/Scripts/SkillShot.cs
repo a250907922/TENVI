@@ -134,6 +134,7 @@ public class SkillShot : MonoBehaviour {
 	}
 
 	private void SwordFire(){
+		cd = 0.5f;
 		isAttack = true; // アニメーション用フラグ
 		StartCoroutine("WaitForAttack");
 		if(Player.facingRight){ // 向きとオブジェクトを出す場所を合わせる
@@ -151,34 +152,42 @@ public class SkillShot : MonoBehaviour {
 	}
 
 	private void EnergyBlast(){
+		cd = 1.0f;
 		Instantiate(energyBlast, this.gameObject.transform.position, Quaternion.identity);
 	}
 
 	private void ErekiBall(){
+		cd = 0.5f;
 		Instantiate(erekiBall, this.gameObject.transform.position, Quaternion.identity);
 	}
 
 	private void ErekiBall2(){
+		cd = 0.5f;
 		Instantiate(erekiBall2, this.gameObject.transform.position, Quaternion.identity);
 	}
 
 	private void FireShot(){
+		cd = 1.0f;
 		Instantiate(fireShot, this.gameObject.transform.position, Quaternion.identity);
 	}
 
 	private void FrameBall(){
+		cd = 0.5f;
 		Instantiate(frameBall, this.gameObject.transform.position, Quaternion.identity);
 	}
 
 	private void GreenCore(){
+		cd = 1.0f;
 		Instantiate(greenCore, this.gameObject.transform.position, Quaternion.identity);
 	}
 
 	private void SkillAttack(){
+		cd = 0.5f;
 		Instantiate(skillAttack, this.gameObject.transform.position, Quaternion.identity);
 	}
 
 	private void SkillAttack2(){
+		cd = 0.3f;
 		if(Player.facingRight){
 			direction = 1;
 		}else{
@@ -188,14 +197,17 @@ public class SkillShot : MonoBehaviour {
 	}
 
 	private void Spark(){
+		cd = 2.0f;
 		StartCoroutine("SparkStart");
 	}
 
 	private void WhityBomb(){
+		cd = 1.0f;
 		Instantiate(whityBomb, this.gameObject.transform.position, Quaternion.identity);
 	}
 
 	private void WhityBomb2(){
+		cd = 3.0f;
 		DropPosX = Random.Range(-8.0f, 8.0f);
 		DropPosY = Random.Range(-3.0f, 0.0f);
 		Instantiate(whityBomb2, new Vector2(DropPosX, DropPosY), Quaternion.identity);
@@ -214,9 +226,14 @@ public class SkillShot : MonoBehaviour {
 	}
 
 	public void SkillButton() {
-		skillName = PlayerPrefs.GetString("skill");
+		if(GameManager.challengeMode){
+			skillName = PlayerPrefs.GetString("ChalSkill");
+		}else{
+			skillName = PlayerPrefs.GetString("skill");
+		}
+		Debug.Log(skillName);
 		switch(skillName){
-			case "default":
+			default:
 			SwordFire();
 			break;
 			case "energyBlast":

@@ -10,8 +10,10 @@ public class Status : MonoBehaviour {
     public int exp;
     public Text playerLevelText, stsPointText, hpText, pwrText, defText, intText, wisText;
     public Button hpButton, pwrButton, defButton, intButton, wisButton;
+    public Button skillSetButton;
 
     void Awake() {
+      skillSetButton.interactable = false;
         playerLevel = PlayerPrefs.GetInt("playerLevel"); //プレイヤのレベル
         stsPoint = PlayerPrefs.GetInt("stsPoint"); //残りステータスポイント
         hpLevel = PlayerPrefs.GetInt("hpLevel"); //HPに振ったポイント

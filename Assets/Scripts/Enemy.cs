@@ -56,11 +56,11 @@ public class Enemy : MonoBehaviour {
 	//透明からだんだん出現する
 	private IEnumerator SpawnEnemy() {
 		Color updateColor = new Vector4(0, 0, 0, 0.1f);
-		renderer.material.color = new Vector4(255, 255, 255, 0);
+		renderer.material.color = new Vector4(1, 1, 1, 0);
 		while (renderer.material.color.a <= 1){
 			renderer.material.color += updateColor;
 			if(renderer.material.color.a == 0.6f)
-				renderer.material.color = new Vector4(255,255,255,1);
+				renderer.material.color = new Vector4(1,1,1,1);
 			yield return new WaitForSeconds(0.3f);
 		}
 		gameObject.layer = 10;

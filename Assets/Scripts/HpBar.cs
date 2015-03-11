@@ -20,7 +20,7 @@ public class HpBar : MonoBehaviour {
       hitPoint = PlayerPrefs.GetInt("ChalHp");
       defence = PlayerPrefs.GetInt("ChalDef");
     }else{
-      hitPoint = PlayerPrefs.GetInt("hitPoint");
+      hitPoint = PlayerPrefs.GetInt("hitPoint") + 5;
       defence = PlayerPrefs.GetInt("defence");
     }
   }
@@ -48,7 +48,7 @@ public class HpBar : MonoBehaviour {
     //ダメージ
     hitPoint -= damage;
     //HP0以下になるとゲームオーバー
-    if(hitPoint <= 0){
+    if(hitPoint <= 0 && !gameManager.IsStageClear()){
       gameManager.GameOver();
     }
     // HPゲージ UI

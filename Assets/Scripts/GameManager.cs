@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update () {
-		if(!IsGameOver()){
+		if(!IsGameOver() || !IsStageClear()){
 			if(Time.frameCount % 100 == 0){
 				float tmpXpos = Random.Range(-8.0f, 8.0f);
 				// EnemyObjectのInstantiate
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
 			remainCount = 0;
 		enemyKillCountText.text = "残り" + remainCount.ToString() + "体";
 
-		if(remainCount <= 0 && nStage!=0)
+		if(remainCount <= 0 && nStage!=0 && !IsGameOver())
 			StageClear();
 	}
 
@@ -63,14 +63,20 @@ public class GameManager : MonoBehaviour {
 		return gameOverText.gameObject.activeSelf == true;
 	}
 
+	public bool IsStageClear() {
+		return stageClearText.gameObject.activeSelf == true;
+	}
+
 	public void StageClear() {
-		Pauser.Pause();
+		//Pauser.Pause();
+		//Time.timeScale=0;
 		PlayerPrefs.SetInt("clearStage", nStage);
 		stageClearText.gameObject.SetActive(true);
 	}
 
 	public void GameOver() {
-		Pauser.Pause();
+		//Pauser.Pause();
+		//Time.timeScale=0;
 		gameOverText.gameObject.SetActive(true);
 		//Application.LoadLevel("Home");
 	}

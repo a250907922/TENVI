@@ -44,18 +44,27 @@ public class StageSelect : MonoBehaviour {
 	}
 	public void Stage2Button() {
 		stageNum = 2;
+		Application.LoadLevel("Play");
+		PlayerPrefs.SetInt("challengeMode", 0);//false
 	}
 	public void Stage3Button() {
 		stageNum = 3;
+		Application.LoadLevel("Play");
+		PlayerPrefs.SetInt("challengeMode", 0);//false
 	}
 	public void Stage4Button() {
 		stageNum = 4;
+		Application.LoadLevel("Play");
+		PlayerPrefs.SetInt("challengeMode", 0);//false
 	}
 	public void Stage5Button() {
-		stageNum = 5;
+		stageNum = 5;Application.LoadLevel("Play");
+		PlayerPrefs.SetInt("challengeMode", 0);//false
 	}
 	public void Stage6Button() {
 		stageNum = 6;
+		Application.LoadLevel("Play");
+		PlayerPrefs.SetInt("challengeMode", 0);//false
 	}
 }
 

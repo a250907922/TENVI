@@ -20,7 +20,7 @@ public class ExperienceManagement : MonoBehaviour {
     private Animator anim;
 
     void Awake () {
-      if(GameManager.challengeMode)
+      if(PlayerPrefs.GetInt("challengeMode") == 1)
         image.gameObject.SetActive(false);
       exp = PlayerPrefs.GetInt("exp"); // 現在の経験値
       allExp = PlayerPrefs.GetInt("allExp");

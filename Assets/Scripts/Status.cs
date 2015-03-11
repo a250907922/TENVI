@@ -13,47 +13,47 @@ public class Status : MonoBehaviour {
     public Button skillSetButton;
 
     void Awake() {
-      skillSetButton.interactable = false;
-        playerLevel = PlayerPrefs.GetInt("playerLevel"); //プレイヤのレベル
-        stsPoint = PlayerPrefs.GetInt("stsPoint"); //残りステータスポイント
-        hpLevel = PlayerPrefs.GetInt("hpLevel"); //HPに振ったポイント
-        pwrLevel = PlayerPrefs.GetInt("pwrLevel"); //Powerに振ったポイント
-        defLevel = PlayerPrefs.GetInt("defLevel"); //Defenceに振ったポイント
-        intLevel = PlayerPrefs.GetInt("intLevel"); //Intelligenceに振ったポイント
-        wisLevel = PlayerPrefs.GetInt("wisLevel"); //Wisdomに振ったポイント
-        hitPoint = PlayerPrefs.GetInt("hitPoint"); //HPの実数値
-        power = PlayerPrefs.GetInt("power"); //Powerの実数値
-        defence = PlayerPrefs.GetInt("defence"); //Defenceの実数値
-        intelligence = PlayerPrefs.GetInt("intelligence");//Intelligenceの実数値
-        wisdom = PlayerPrefs.GetInt("wisdom");//Wisdomの実数値
-        exp = PlayerPrefs.GetInt("exp");
+      //skillSetButton.interactable = false;
+      playerLevel = PlayerPrefs.GetInt("playerLevel"); //プレイヤのレベル
+      stsPoint = PlayerPrefs.GetInt("stsPoint"); //残りステータスポイント
+      hpLevel = PlayerPrefs.GetInt("hpLevel"); //HPに振ったポイント
+      pwrLevel = PlayerPrefs.GetInt("pwrLevel"); //Powerに振ったポイント
+      defLevel = PlayerPrefs.GetInt("defLevel"); //Defenceに振ったポイント
+      intLevel = PlayerPrefs.GetInt("intLevel"); //Intelligenceに振ったポイント
+      wisLevel = PlayerPrefs.GetInt("wisLevel"); //Wisdomに振ったポイント
+      hitPoint = PlayerPrefs.GetInt("hitPoint"); //HPの実数値
+      power = PlayerPrefs.GetInt("power"); //Powerの実数値
+      defence = PlayerPrefs.GetInt("defence"); //Defenceの実数値
+      intelligence = PlayerPrefs.GetInt("intelligence");//Intelligenceの実数値
+      wisdom = PlayerPrefs.GetInt("wisdom");//Wisdomの実数値
+      exp = PlayerPrefs.GetInt("exp");
     }
 
     void Start() {
-        playerLevelText.text = "LEVEL " + playerLevel.ToString();
+      playerLevelText.text = "LEVEL " + playerLevel.ToString();
     }
 
     void Update() {
-        stsPointText.text = "STATUS POINT " + stsPoint.ToString();
-        hpText.text = hpLevel.ToString();
-        pwrText.text = pwrLevel.ToString();
-        defText.text = defLevel.ToString();
-        intText.text = intLevel.ToString();
-        wisText.text = wisLevel.ToString();
+      stsPointText.text = "STATUS POINT " + stsPoint.ToString();
+      hpText.text = hpLevel.ToString();
+      pwrText.text = pwrLevel.ToString();
+      defText.text = defLevel.ToString();
+      intText.text = intLevel.ToString();
+      wisText.text = wisLevel.ToString();
 
-        if(stsPoint <= 0){
-          hpButton.interactable = false;
-          pwrButton.interactable = false;
-          defButton.interactable = false;
-          intButton.interactable = false;
-          wisButton.interactable = false;
-        }else{
-          hpButton.interactable = true;
-          pwrButton.interactable = true;
-          defButton.interactable = true;
-          intButton.interactable = true;
-          wisButton.interactable = true;
-        }
+      if(stsPoint <= 0){
+        hpButton.interactable = false;
+        pwrButton.interactable = false;
+        defButton.interactable = false;
+        intButton.interactable = false;
+        wisButton.interactable = false;
+      }else{
+        hpButton.interactable = true;
+        pwrButton.interactable = true;
+        defButton.interactable = true;
+        intButton.interactable = true;
+        wisButton.interactable = true;
+      }
     }
 
     void OnDestroy() {

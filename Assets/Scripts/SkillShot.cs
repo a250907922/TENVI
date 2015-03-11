@@ -15,11 +15,13 @@ public class SkillShot : MonoBehaviour {
 	public Button skillButton;
 	private float cd = 1.0f;
 	private float cdr = 0.0f;
+	private int challengeMode;
 
 	// Use this for initialization
 	void Start () {
 		//DropPosY = Screen.height;
 		anim = GetComponent<Animator>();
+		challengeMode = PlayerPrefs.GetInt("challengeMode");
 	}
 
 	// Update is called once per frame
@@ -226,7 +228,7 @@ public class SkillShot : MonoBehaviour {
 	}
 
 	public void SkillButton() {
-		if(GameManager.challengeMode){
+		if(challengeMode == 1){
 			skillName = PlayerPrefs.GetString("ChalSkill");
 		}else{
 			skillName = PlayerPrefs.GetString("skill");

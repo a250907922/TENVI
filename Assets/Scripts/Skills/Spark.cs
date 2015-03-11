@@ -17,7 +17,7 @@ public class Spark : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		rigidbody2D.AddForce(acceleration * rigidbody2D.mass);
+		GetComponent<Rigidbody2D>().AddForce(acceleration * GetComponent<Rigidbody2D>().mass);
 		lifeTime -= Time.deltaTime;
 		if (lifeTime < 0) {
 			Destroy(gameObject);

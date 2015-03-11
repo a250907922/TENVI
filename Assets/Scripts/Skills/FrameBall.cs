@@ -16,7 +16,7 @@ public class FrameBall : MonoBehaviour {
 	}
 
 	void Update () {
-		rigidbody2D.AddForce(acceleration * rigidbody2D.mass);
+		GetComponent<Rigidbody2D>().AddForce(acceleration * GetComponent<Rigidbody2D>().mass);
 		//時間経過で消滅
 		lifeTime -= Time.deltaTime;
 		if (lifeTime < 0) {

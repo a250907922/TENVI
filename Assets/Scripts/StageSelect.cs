@@ -6,64 +6,41 @@ public class StageSelect : MonoBehaviour {
 	public Button button1, button2, button3, button4, button5, button6;
 	public bool clrStg1, clrStg2, clrStg3, clrStg4, clrStg5, clrStg6 = false;
 	public static int stageNum;
+	private int clearStage;
 
 	void Start () {
-		if(!clrStg1)
+		clearStage = PlayerPrefs.GetInt("clearStage");
+		Debug.Log("クリアしているステージは"+clearStage.ToString());
+		if(clearStage < 1)
 			button2.interactable = false;
-		if(!clrStg2)
+		else
+			button2.interactable = true;
+		if(clearStage < 2)
 			button3.interactable = false;
-		if(!clrStg3)
+		else
+			button3.interactable = true;
+		if(clearStage < 3)
 			button4.interactable = false;
-		if(!clrStg4)
+		else
+			button4.interactable = true;
+		if(clearStage < 4)
 			button5.interactable = false;
-		if(!clrStg5)
+		else
+			button5.interactable = true;
+		if(clearStage < 5)
 			button6.interactable = false;
+		else
+			button6.interactable = true;
+
 	}
 
 	void Update () {
 	}
 
-	public void UnlockStage(int clrStg) { //引数にクリアしたステージ
-		switch(clrStg){
-			case 1:
-			clrStg1 = true;
-			break;
-			case 2:
-			clrStg2 = true;
-			break;
-			case 3:
-			clrStg3 = true;
-			break;
-			case 4:
-			clrStg4 = true;
-			break;
-			case 5:
-			clrStg5 = true;
-			break;
-			case 6:
-			clrStg6 = true;
-			break;
-		}
-		ChangeStageUI();
-	}
-
-	public void ChangeStageUI() {//クリアしたステージの次のステージのボタンを押せるように変更
-		if(clrStg1)
-			button2.interactable = true;
-		if(clrStg2)
-			button3.interactable = true;
-		if(clrStg3)
-			button4.interactable = true;
-		if(clrStg4)
-			button5.interactable = true;
-		if(clrStg5)
-			button6.interactable = true;
-	}
-
 	public void Stage1Button() {
 		stageNum = 1;
 		Application.LoadLevel("Play");
-		GameManager.challengeMode = false;
+		PlayerPrefs.SetInt("challengeMode", 0);//false
 	}
 	public void Stage2Button() {
 		stageNum = 2;

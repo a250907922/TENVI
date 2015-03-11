@@ -322,7 +322,7 @@ public class Pick : MonoBehaviour {
 
 	public void PlayButton(){
 		Application.LoadLevel("Play");
-		GameManager.challengeMode = true;
+		PlayerPrefs.SetInt("challengeMode", 1);//true
 	}
 
 	void OnDestroy(){

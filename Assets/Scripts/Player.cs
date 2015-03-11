@@ -52,7 +52,7 @@ public class Player : MonoBehaviour {
 
 		/* 弾発射 */
 		if(bulletAttack){
-			StartCoroutine("WaitForAttack");
+			//StartCoroutine("WaitForAttack");
 			Instantiate(BulletPrefab, new Vector2(transform.position.x + AttackBullet.bulletDir, transform.position.y), Quaternion.identity);
 			bulletAttack = false;
 		}
@@ -70,12 +70,12 @@ public class Player : MonoBehaviour {
 				hpBar.SendMessage("OnDamage", 1); //HPバーにダメージメッセージを送る
 				if((col.gameObject.transform.position.x - this.transform.position.x) > 0) {
 					isRightEnemy = true;
-					rigidbody2D.AddForce(-Vector2.right * damageForce);
-					rigidbody2D.AddForce(Vector2.up * damageForce);
+					GetComponent<Rigidbody2D>().AddForce(-Vector2.right * damageForce);
+					GetComponent<Rigidbody2D>().AddForce(Vector2.up * damageForce);
 				} else {
 					isRightEnemy = false;
-					rigidbody2D.AddForce(Vector2.right * damageForce);
-					rigidbody2D.AddForce(Vector2.up * damageForce);
+					GetComponent<Rigidbody2D>().AddForce(Vector2.right * damageForce);
+					GetComponent<Rigidbody2D>().AddForce(Vector2.up * damageForce);
 				}
 				isDamaged = true;
 				StartCoroutine("WaitForDamage");
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour {
 	public void Jump() {
 		if(grounded){
 			//anim.SetTrigger("Jump");
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
 		}
 	}
 
@@ -107,14 +107,14 @@ public class Player : MonoBehaviour {
 				Flip();
 		}
 			//力を加える
-		if(h * rigidbody2D.velocity.x < maxSpeed)
-			rigidbody2D.AddForce(Vector2.right * h/3 * moveForce);
+		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
+			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h/3 * moveForce);
 
 		//maxspeed超えないように
-		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
-		rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
+		GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 		//アニメーション用
-		anim.SetFloat ("Speed", Mathf.Abs (rigidbody2D.velocity.x));
+		anim.SetFloat ("Speed", Mathf.Abs (GetComponent<Rigidbody2D>().velocity.x));
 	}
 
 	/* 左右反転 */
@@ -128,23 +128,23 @@ public class Player : MonoBehaviour {
 	/* ダメージ受けた後の無敵時間 */
 	IEnumerator WaitForDamage() {
 		float flashTime = 0f;
-		Color color = renderer.material.color;
+		Color color = GetComponent<Renderer>().material.color;
 		bool inv = false;
 		while (mutekiTime > flashTime){
 			if(!inv){
 				color.a = 0.5f;
-				renderer.material.color = color;
+				GetComponent<Renderer>().material.color = color;
 				inv = true;
 			}else{
 				color.a = 1.0f;
-				renderer.material.color = color;
+				GetComponent<Renderer>().material.color = color;
 				inv = false;
 			}
 			yield return new WaitForSeconds(flashInterval);
 			flashTime += flashInterval;
 		}
 		color.a = 1.0f;
-		renderer.material.color = color;
+		GetComponent<Renderer>().material.color = color;
 		isDamaged = false;
 	}
 

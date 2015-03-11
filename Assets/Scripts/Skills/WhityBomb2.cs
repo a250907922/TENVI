@@ -19,7 +19,7 @@ public class WhityBomb2 : MonoBehaviour {
 		}
 		if(explodeTime < 0){
 			gameObject.layer = 10;
-			rigidbody2D.isKinematic = true;
+			GetComponent<Rigidbody2D>().isKinematic = true;
 		}
 	}
 

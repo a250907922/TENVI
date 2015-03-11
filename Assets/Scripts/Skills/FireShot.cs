@@ -17,7 +17,7 @@ public class FireShot : MonoBehaviour {
 	}
 
 	void Update () {
-			rigidbody2D.AddForce(acceleration * rigidbody2D.mass);
+			GetComponent<Rigidbody2D>().AddForce(acceleration * GetComponent<Rigidbody2D>().mass);
 
 		lifeTime -= Time.deltaTime;
 		explodeTime -=Time.deltaTime;
@@ -26,7 +26,7 @@ public class FireShot : MonoBehaviour {
 		}
 		if(explodeTime < 0){
 			gameObject.layer = 10;
-			rigidbody2D.isKinematic = true;
+			GetComponent<Rigidbody2D>().isKinematic = true;
 		}
 	}
 

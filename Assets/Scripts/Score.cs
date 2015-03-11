@@ -5,7 +5,7 @@ public class Score : MonoBehaviour {
 	public int nowScore = 0;
 	
 	void Update () {
-		this.guiText.text =  " SCORE:" + nowScore.ToString();
+		this.GetComponent<GUIText>().text =  " SCORE:" + nowScore.ToString();
 	}
 
 	public void UpdateScore(int getScore){

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class StageManager : MonoBehaviour {
 	public int stageNum;
-	public int slimeKillNum = 0;
-	public int hogeKillNum = 0;
-	public int draKillNum = 0;
+	public int rqSlimeKillNum = 0;
+	public int rqHogeKillNum = 0;
+	public int rqDraKillNum = 0;
 	public int[] needKillEnemys = new int[] {0, 0, 0};//{slime, hoge, dragon}
 
 	void Start () {
@@ -16,28 +16,29 @@ public class StageManager : MonoBehaviour {
 
 	}
 
-	public int[] KillEnemyTable(int nStage) {
+	public int[] GetKillEnemys(int nStage) {
 		switch(nStage){
 			case 1:
-			slimeKillNum = 5;
+			rqSlimeKillNum = 5;
 			break;
 			case 2:
-			slimeKillNum = 8;
+			rqSlimeKillNum = 8;
 			break;
 			case 3:
-			slimeKillNum = 10;
+			rqSlimeKillNum = 10;
 			break;
 			case 4:
-			slimeKillNum = 10;
+			rqSlimeKillNum = 10;
 			break;
 			case 5:
-			slimeKillNum = 10;
+			rqSlimeKillNum = 10;
 			break;
 			case 6:
-			slimeKillNum = 10;
+			rqSlimeKillNum = 0;
+			rqDraKillNum = 1;
 			break;
 		}
-		needKillEnemys = new int[] {slimeKillNum, hogeKillNum, draKillNum};
+		needKillEnemys = new int[] {rqSlimeKillNum, rqHogeKillNum, rqDraKillNum};
 		return needKillEnemys;
 	}
 }

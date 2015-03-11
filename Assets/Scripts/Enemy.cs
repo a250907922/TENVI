@@ -20,17 +20,20 @@ public class Enemy : MonoBehaviour {
 	public static bool IsDeadEnemy = false;
 	public Text damageText;
 
-	private bool challenge;
+	private int challengeMode;
 	private int chalPwr;
 	private int chalInt;
 	private int power;
 	private int intelligence;
 
+	GameManager gameManager;
+
 	void Awake() {
-		challenge = GameManager.challengeMode;
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+		challengeMode = PlayerPrefs.GetInt("challengeMode");
 		InvokeRepeating("Move", 2.0f, 1.0f);
 		gameObject.layer = 16;
-		if(challenge){
+		if(challengeMode == 1){
 			chalPwr = PlayerPrefs.GetInt("ChalPwr");
 			chalInt = PlayerPrefs.GetInt("ChalInt");
 		}else{
@@ -56,11 +59,11 @@ public class Enemy : MonoBehaviour {
 	//透明からだんだん出現する
 	private IEnumerator SpawnEnemy() {
 		Color updateColor = new Vector4(0, 0, 0, 0.1f);
-		renderer.material.color = new Vector4(1, 1, 1, 0);
-		while (renderer.material.color.a <= 1){
-			renderer.material.color += updateColor;
-			if(renderer.material.color.a == 0.6f)
-				renderer.material.color = new Vector4(1,1,1,1);
+		GetComponent<Renderer>().material.color = new Vector4(1, 1, 1, 0);
+		while (GetComponent<Renderer>().material.color.a <= 1){
+			GetComponent<Renderer>().material.color += updateColor;
+			if(GetComponent<Renderer>().material.color.a == 0.6f)
+				GetComponent<Renderer>().material.color = new Vector4(1,1,1,1);
 			yield return new WaitForSeconds(0.3f);
 		}
 		gameObject.layer = 10;
@@ -77,10 +80,10 @@ public class Enemy : MonoBehaviour {
 			if(facingRight)
 				Flip();
 		}
-		if(hor * rigidbody2D.velocity.x < maxSpeed) //maxSpeedより小さかったら力を加える
-			rigidbody2D.AddForce(Vector2.right * hor * moveForce);
-		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed) //maxSpeedより大きかったら修正
-			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+		if(hor * GetComponent<Rigidbody2D>().velocity.x < maxSpeed) //maxSpeedより小さかったら力を加える
+			GetComponent<Rigidbody2D>().AddForce(Vector2.right * hor * moveForce);
+		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed) //maxSpeedより大きかったら修正
+			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 	}
 
 	void Flip () {
@@ -109,7 +112,7 @@ public class Enemy : MonoBehaviour {
 	private bool Critical() {
 		bool critical = false;
 		int randomInt = Random.Range(0,100);
-		if(challenge){
+		if(challengeMode == 1){
 			if(chalInt > randomInt)
 				critical = true;
 		}else{
@@ -121,9 +124,10 @@ public class Enemy : MonoBehaviour {
 
 	void EnemyDead() {
 		Destroy(gameObject);
-		GameManager.EnemyDeadCount();
 		//score.SendMessage("UpdateScore", Point);
-		if(!challenge)
+		if(challengeMode == 0){
 			expObj.SendMessage("GetExperience", slimeExp);
+			gameManager.slimeKillCount++;
+		}
 	}
 }

@@ -33,9 +33,9 @@ public class AttackMelee : MonoBehaviour {
     }
 
     private IEnumerator WaitForDirection() {
-      renderer.enabled = false;
+      GetComponent<Renderer>().enabled = false;
       yield return new WaitForSeconds(0.01f);
-      renderer.enabled = true;
+      GetComponent<Renderer>().enabled = true;
       yield break;
     }
 }

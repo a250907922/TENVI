@@ -9,7 +9,7 @@ public class AttackBullet : MonoBehaviour {
 
     void Start () {
         speed = 15;
-        rigidbody2D.velocity = new Vector2(bulletDir * speed, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(bulletDir * speed, 0);
         bulletDir = 1;
         bulletDamage = DamageCalc.fixedDamage("Bullet");
     }

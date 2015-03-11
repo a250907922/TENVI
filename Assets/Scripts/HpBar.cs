@@ -5,24 +5,24 @@ using System.Collections;
 public class HpBar : MonoBehaviour {
   private RectTransform rectTransform;
   public Image image;
-  public GameObject gameManager;
+  GameManager gameManager;
   private int hitPoint; //現在のHP
   private int defence;
   private int maxHp; //HP最大値
   private float rectWidth; //HPゲージの長さ
   private float aDamageWidth; //1ダメージで減るHPゲージの長さ
-  private bool challenge;
+  private int challengeMode;
 
   void Awake() {
-    challenge = GameManager.challengeMode;
-    if(challenge){
+    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    challengeMode = PlayerPrefs.GetInt("challengeMode");
+    if(challengeMode == 1){
       hitPoint = PlayerPrefs.GetInt("ChalHp");
       defence = PlayerPrefs.GetInt("ChalDef");
     }else{
       hitPoint = PlayerPrefs.GetInt("hitPoint");
       defence = PlayerPrefs.GetInt("defence");
     }
-    gameManager = GameObject.Find("GameManager");
   }
 
   void Start () {
@@ -49,7 +49,7 @@ public class HpBar : MonoBehaviour {
     hitPoint -= damage;
     //HP0以下になるとゲームオーバー
     if(hitPoint <= 0){
-      gameManager.SendMessage("GameOver");
+      gameManager.GameOver();
     }
     // HPゲージ UI
     rectWidth = aDamageWidth * hitPoint;
@@ -59,7 +59,7 @@ public class HpBar : MonoBehaviour {
   private bool Block() {
     bool block = false;
     int randomInt = Random.Range(0,100);
-    if(challenge){
+    if(challengeMode == 1){
       if(defence*5 > randomInt)
         block = true;
     }else{

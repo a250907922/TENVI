@@ -143,6 +143,7 @@ MonoBehaviour:
   slimeExp: 1
   TagetObjectName: 
   damageText: {fileID: 0}
+  CoinPrefab: {fileID: 177914, guid: 8d4502d02b59e41b39a63d605d9dde96, type: 2}
 --- !u!212 &21234036
 SpriteRenderer:
   m_ObjectHideFlags: 1

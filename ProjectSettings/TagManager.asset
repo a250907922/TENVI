@@ -2,6 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
+  serializedVersion: 2
   tags:
   - Enemy
   - Bullet
@@ -10,58 +11,53 @@ TagManager:
   - Slime
   - Attack
   - Ground
+  - Coin
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
   - 
   - 
-  Builtin Layer 0: Default
-  Builtin Layer 1: TransparentFX
-  Builtin Layer 2: Ignore Raycast
-  Builtin Layer 3: 
-  Builtin Layer 4: Water
-  Builtin Layer 5: UI
-  Builtin Layer 6: 
-  Builtin Layer 7: 
-  User Layer 8: Ground
-  User Layer 9: Player
-  User Layer 10: Enemy
-  User Layer 11: Skills
-  User Layer 12: MeleeAttack
-  User Layer 13: Wall
-  User Layer 14: Background
-  User Layer 15: Particle
-  User Layer 16: SpawningEnemy
-  User Layer 17: PickedCharacter
-  User Layer 18: NeverHit
-  User Layer 19: 
-  User Layer 20: 
-  User Layer 21: 
-  User Layer 22: 
-  User Layer 23: 
-  User Layer 24: 
-  User Layer 25: 
-  User Layer 26: 
-  User Layer 27: 
-  User Layer 28: 
-  User Layer 29: 
-  User Layer 30: 
-  User Layer 31: 
+  - Ground
+  - Player
+  - Enemy
+  - Skills
+  - MeleeAttack
+  - Wall
+  - Background
+  - Particle
+  - SpawningEnemy
+  - PickedCharacter
+  - NeverHit
+  - Items
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Background
-    userID: 1
     uniqueID: 3777626711
     locked: 0
   - name: Default
-    userID: 0
     uniqueID: 0
     locked: 0
   - name: Particle
-    userID: 3
     uniqueID: 3013243645
     locked: 0
   - name: Enemy
-    userID: 4
     uniqueID: 245752509
     locked: 0
   - name: Player
-    userID: 2
     uniqueID: 1048046357
     locked: 0

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
 	private int[] requiredKillEnemys = new int[3];
 	public Text enemyKillCountText;
 	private int remainCount;
+	private Text coinText;
+	public int coin;
 
 	void Awake() {
 		nStage = StageSelect.stageNum;
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour {
 		stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
 		requiredKillEnemys = stageManager.GetKillEnemys(nStage);
 		Debug.Log("ステージ"+nStage+"です");
+		coinText = GameObject.Find("CoinText").GetComponent<Text>();
+		coin = PlayerPrefs.GetInt("Coin");
 	}
 
 	void Update () {
@@ -57,6 +61,8 @@ public class GameManager : MonoBehaviour {
 
 		if(remainCount <= 0 && nStage!=0 && !IsGameOver())
 			StageClear();
+
+		coinText.text = coin.ToString();
 	}
 
 	public bool IsGameOver() {
@@ -79,5 +85,9 @@ public class GameManager : MonoBehaviour {
 		//Time.timeScale=0;
 		gameOverText.gameObject.SetActive(true);
 		//Application.LoadLevel("Home");
+	}
+
+	void OnDestroy() {
+		PlayerPrefs.SetInt("Coin", coin);
 	}
 }

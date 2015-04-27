@@ -24,23 +24,19 @@ public class Pick : MonoBehaviour {
 	private GameObject pickEndObjects, statusPanel;
 
 	void Awake() {
-		pickEndObjects = GameObject.Find("PickEndObjects");
-		pickEndObjects.SetActive(false);
-		statusPanel = GameObject.Find("StatusPanel");
-		statusPanel.SetActive(false);
-		leftButton.gameObject.SetActive(false);
-		centerButton.gameObject.SetActive(false);
-		rightButton.gameObject.SetActive(false);
-		pickCountText.gameObject.SetActive(false);
+		PlayerPrefs.SetInt("ArenaClearStage", 0);
 	}
 
 	void Start () {
 		leftButton.interactable = false;
 		centerButton.interactable = false;
 		rightButton.interactable = false;
+		//最初は青
 		image.sprite = imageBlue;
 		//出る確率
 		probs = new float[] {2,2,2,2,1,1,1,1, 5,5,5,5,5};
+		StartCoroutine("PickStart");
+		NextPick();
 	}
 
 	void Update () {
@@ -279,18 +275,7 @@ public class Pick : MonoBehaviour {
 		StartCoroutine("Picked");
 	}
 
-	public void PickStartButton() {
-		startButton.gameObject.SetActive(false);
-		StartCoroutine("PickStart");
-		NextPick();
-	}
-
 	private IEnumerator PickStart() {
-		statusPanel.SetActive(true);
-		leftButton.gameObject.SetActive(true);
-		centerButton.gameObject.SetActive(true);
-		rightButton.gameObject.SetActive(true);
-		pickCountText.gameObject.SetActive(true);
 		yield return new WaitForSeconds(1.0f);
 		ToggleAllButton();
 		yield break;
@@ -314,10 +299,7 @@ public class Pick : MonoBehaviour {
 	}
 
 	private void PickEnd(){
-		leftButton.gameObject.SetActive(false);
-		centerButton.gameObject.SetActive(false);
-		rightButton.gameObject.SetActive(false);
-		pickEndObjects.SetActive(true);
+		Application.LoadLevel("ArenaReady");
 	}
 
 	public void PlayButton(){
@@ -326,6 +308,7 @@ public class Pick : MonoBehaviour {
 	}
 
 	void OnDestroy(){
+		//決定した能力を保存
 		PlayerPrefs.SetInt("ChalHp", hpPoint);
 		PlayerPrefs.SetInt("ChalPwr", pwrPoint);
 		PlayerPrefs.SetInt("ChalDef", defPoint);

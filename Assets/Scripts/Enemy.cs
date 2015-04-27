@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour {
 	private int intelligence;
 
 	GameManager gameManager;
+	public GameObject CoinPrefab;
 
 	void Awake() {
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -124,10 +125,13 @@ public class Enemy : MonoBehaviour {
 
 	void EnemyDead() {
 		Destroy(gameObject);
+
 		//score.SendMessage("UpdateScore", Point);
 		if(challengeMode == 0){
 			expObj.SendMessage("GetExperience", slimeExp);
 			gameManager.slimeKillCount++;
+			Instantiate(CoinPrefab, transform.position, Quaternion.identity);
+			gameManager.coin++;
 		}
 	}
 }

@@ -62,6 +62,11 @@ public class Player : MonoBehaviour {
 		/* 地面に接触しているか */
 		if(col.gameObject.tag == "Ground")
 			grounded = true;
+	}
+
+	void OnCollisionExit2D(Collision2D col){
+		if(col.gameObject.tag == "Ground")
+			grounded = false;
 
 		/* ダメージ判定 */
 		if(col.gameObject.tag == "Enemy"){
@@ -81,11 +86,14 @@ public class Player : MonoBehaviour {
 				StartCoroutine("WaitForDamage");
 			}
 		}
+		
 	}
-
-	void OnCollisionExit2D(Collision2D col){
-		if(col.gameObject.tag == "Ground")
-			grounded = false;
+	
+	void OnTriggerEnter2D(Collider2D col){
+		if(col.gameObject.tag == "Coin"){
+			Debug.Log("Get Coin");
+			Destroy(col.gameObject);
+		}
 	}
 
 	//ジャンプ

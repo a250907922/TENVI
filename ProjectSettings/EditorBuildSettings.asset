@@ -17,3 +17,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Pick.unity
   - enabled: 1
     path: Assets/Scenes/SkillSet.unity
+  - enabled: 1
+    path: Assets/Scenes/Arena.unity
+  - enabled: 1
+    path: Assets/Scenes/ArenaReady.unity

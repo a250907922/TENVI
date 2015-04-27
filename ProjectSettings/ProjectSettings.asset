@@ -75,13 +75,13 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.ChNr.tokagekun
-  bundleVersion: 1.5
+  bundleVersion: 1.6
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   productGUID: 97599a1bdd76b41cba4c0eb80f9e3df4
-  AndroidBundleVersionCode: 6
+  AndroidBundleVersionCode: 7
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
   aotOptions: 

@@ -1,0 +1,12 @@
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/b1012181/UnityProjects/TENVI/obj/Debug/Assembly-CSharp-firstpass.dll
+/Users/b1012181/UnityProjects/TENVI/obj/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/UnityEngine.dll
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/UnityEditor.dll
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/Mono.Cecil.dll
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/Unity.DataContract.dll
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/b1012181/UnityProjects/TENVI/Temp/bin/Debug/Unity.CecilTools.dll

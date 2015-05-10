@@ -21,3 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Arena.unity
   - enabled: 1
     path: Assets/Scenes/ArenaReady.unity
+  - enabled: 1
+    path: Assets/Scenes/ArenaGameOver.unity

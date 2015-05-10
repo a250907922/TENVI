@@ -68,6 +68,8 @@
      <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MonoPInvokeCallbackAttribute.cs" />
      <Compile Include="Assets\Particles\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <Compile Include="Assets\Scripts\Arena.cs" />
+     <Compile Include="Assets\Scripts\ArenaGameOver.cs" />
+     <Compile Include="Assets\Scripts\ArenaHp.cs" />
      <Compile Include="Assets\Scripts\ArenaLizardStatus.cs" />
      <Compile Include="Assets\Scripts\ArenaReady.cs" />
      <Compile Include="Assets\Scripts\AttackBullet.cs" />
